@@ -18,6 +18,12 @@ const Function1 = () => import('views/javascript/function/function-1')
 const Function2 = () => import('views/javascript/function/function-2')
 const Function3 = () => import('views/javascript/function/function-3')
 
+const Window = () => import('views/javascript/bom/window')
+const Location = () => import('views/javascript/bom/location')
+const Navigator = () => import('views/javascript/bom/navigator')
+const Screen = () => import('views/javascript/bom/screen')
+const History = () => import('views/javascript/bom/history')
+
 export default {
   JavaScript,
   DataTypes,
@@ -33,5 +39,10 @@ export default {
   Array2,
   Function1,
   Function2,
-  Function3
+  Function3,
+  Window,
+  Location,
+  Navigator,
+  Screen,
+  History
 }

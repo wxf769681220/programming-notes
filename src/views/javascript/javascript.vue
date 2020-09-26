@@ -1,15 +1,15 @@
 <template>
   <div class="javascript">
     <Menu class="menu-wrapper" router :collapse="isCollapse">
-      <MenuItem index="dataTypes" to="javascript/dataTypes">
+      <MenuItem index="dataTypes">
         <i class="el-icon-s-promotion"></i>
         <span slot="title">数据类型</span>
       </MenuItem>
-      <MenuItem index="operators" to="javascript/operators">
+      <MenuItem index="operators">
         <i class="el-icon-s-promotion"></i>
         <span slot="title">运算符</span>
       </MenuItem>
-      <MenuItem index="statements" to="javascript/statements">
+      <MenuItem index="statements">
         <i class="el-icon-s-promotion"></i>
         <span slot="title">语句</span>
       </MenuItem>
@@ -18,35 +18,46 @@
           <i class="el-icon-s-promotion"></i>
           <span slot="title">引用类型</span>
         </template>
-        <MenuItem index="referenceType-1" to="javascript/referenceType1-1">时间日期</MenuItem>
-        <MenuItem index="referenceType-2" to="javascript/referenceType1-2">正则表达式</MenuItem>
-        <MenuItem index="referenceType-3" to="javascript/referenceType1-3">基本包装类型</MenuItem>
-        <MenuItem index="referenceType-4" to="javascript/referenceType1-4">Math对象</MenuItem>
+        <MenuItem index="referenceType-1">时间日期</MenuItem>
+        <MenuItem index="referenceType-2">正则表达式</MenuItem>
+        <MenuItem index="referenceType-3">基本包装类型</MenuItem>
+        <MenuItem index="referenceType-4">Math对象</MenuItem>
       </Submenu>
       <Submenu index="object">
         <template slot="title">
           <i class="el-icon-s-promotion"></i>
           <span slot="title">对象</span>
         </template>
-        <MenuItem index="object-1" to="javascript/object-1">对象</MenuItem>
-        <MenuItem index="object-2" to="javascript/object-2">面向对象的程序设计</MenuItem>
+        <MenuItem index="object-1">对象</MenuItem>
+        <MenuItem index="object-2">面向对象的程序设计</MenuItem>
       </Submenu>
       <Submenu index="array">
         <template slot="title">
           <i class="el-icon-s-promotion"></i>
           <span slot="title">数组</span>
         </template>
-        <MenuItem index="array-1" to="javascript/array-1">数组</MenuItem>
-        <MenuItem index="array-2" to="javascript/array-2">数组方法</MenuItem>
+        <MenuItem index="array-1">数组</MenuItem>
+        <MenuItem index="array-2">数组方法</MenuItem>
       </Submenu>
       <Submenu index="function">
         <template slot="title">
           <i class="el-icon-s-promotion"></i>
           <span slot="title">函数</span>
         </template>
-        <MenuItem index="function-1" to="javascript/function-1">函数</MenuItem>
-        <MenuItem index="function-2" to="javascript/function-2">原型、原型链、继承</MenuItem>
-        <MenuItem index="function-3" to="javascript/function-3">高级函数</MenuItem>
+        <MenuItem index="function-1">函数</MenuItem>
+        <MenuItem index="function-2">原型、原型链、继承</MenuItem>
+        <MenuItem index="function-3">高级函数</MenuItem>
+      </Submenu>
+      <Submenu index="bom">
+        <template slot="title">
+          <i class="el-icon-share"></i>
+          <span slot="title">BOM</span>
+        </template>
+        <MenuItem index="window">Window 对象</MenuItem>
+        <MenuItem index="navigator">Navigator 对象</MenuItem>
+        <MenuItem index="location">Location 对象</MenuItem>
+        <MenuItem index="screen">Screen 对象</MenuItem>
+        <MenuItem index="history">History 对象</MenuItem>
       </Submenu>
     </Menu>
     <section

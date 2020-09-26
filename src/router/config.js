@@ -64,6 +64,26 @@ const routes = [
       {
         path: '/javascript/function-3',
         component: Js.Function3
+      },
+      {
+        path: '/javascript/window',
+        component: Js.Window
+      },
+      {
+        path: '/javascript/location',
+        component: Js.Location
+      },
+      {
+        path: '/javascript/navigator',
+        component: Js.Navigator
+      },
+      {
+        path: '/javascript/screen',
+        component: Js.Screen
+      },
+      {
+        path: '/javascript/history',
+        component: Js.History
       }
     ]
   }

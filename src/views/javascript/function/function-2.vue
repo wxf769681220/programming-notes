@@ -124,6 +124,34 @@
       </div>
     </div>
     <div class="card-column">
+      <div class="card-column-title">2、默认原型 Object</div>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-header">所有引用类型默认都继承 Object，这个继承是通过原型链实现的。
+            所有函数的默认原型都是 Object 的实例，因此默认原型都会包含一个内部指针，指向 <strong class="bold">Object.prototype</strong>。</div>
+          <div class="card-body">
+            <pre v-highlight>
+<code>
+  // 继承 Object.prototype 中的属性方法
+  var obj = {
+    name: 'lee',
+    age: 20
+  }
+
+  obj.constructor                     => Object
+  obj.hasOwnProperty('age')           => true
+  Object.prototype.isPrototypeOf(obj) => true
+
+  obj.toLocaleString()  => [object Object]
+  obj.toString()        => [object Object]
+  obj.valueOf()         => { name: 'lee', age: 20 }
+</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-column">
       <div class="card-column-title">2、原型链</div>
       <div class="card-group">
         <div class="card">
