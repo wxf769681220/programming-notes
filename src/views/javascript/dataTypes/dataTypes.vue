@@ -477,6 +477,27 @@
             </pre>
           </div>
         </div>
+        <div class="card">
+          <div class="card-header">
+            检测对象具体类型。
+          </div>
+          <div class="card-body">
+            <pre v-highlight>
+<code>
+  // 是否是一个函数
+  function isFunction(o) {
+    return Object.prototype.toString.call(o) === "[object Function]"
+  }
+
+  // 是否是一个数组
+  // 类似于 Array.isArray() 方法
+  function isArray(o) {
+    return Object.prototype.toString.call(o) === "[object Array]"
+  }
+</code>
+            </pre>
+          </div>
+        </div>
       </div>
     </div>
   </div>

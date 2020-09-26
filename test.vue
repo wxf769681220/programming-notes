@@ -1,12 +1,10 @@
 <template>
-  <div class="referenceType-2">
+  <div class="test">
     <div class="card-column">
-      <div class="card-column-title">1、RegExp对象</div>
+      <div class="card-column-title">1、数据类型转换</div>
       <div class="card-group">
         <div class="card">
-          <div class="card-header">
-            <strong class="bold"></strong>
-          </div>
+          <div class="card-header">字符串转数值。</div>
           <div class="card-body">
             <pre v-highlight>
 <code>
@@ -21,7 +19,7 @@
 
 <script>
 export default {
-  name: 'referenceType-2'
+  name: 'test'
 }
 </script>
 

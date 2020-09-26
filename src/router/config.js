@@ -46,8 +46,24 @@ const routes = [
         component: Js.Object2
       },
       {
-        path: '/javascript/object-3',
-        component: Js.Object3
+        path: '/javascript/array-1',
+        component: Js.Array1
+      },
+      {
+        path: '/javascript/array-2',
+        component: Js.Array2
+      },
+      {
+        path: '/javascript/function-1',
+        component: Js.Function1
+      },
+      {
+        path: '/javascript/function-2',
+        component: Js.Function2
+      },
+      {
+        path: '/javascript/function-3',
+        component: Js.Function3
       }
     ]
   }

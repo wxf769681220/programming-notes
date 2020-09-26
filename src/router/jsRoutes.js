@@ -10,7 +10,13 @@ const ReferenceType4 = () => import('views/javascript/referenceTypes/referenceTy
 
 const Object1 = () => import('views/javascript/object/object-1')
 const Object2 = () => import('views/javascript/object/object-2')
-const Object3 = () => import('views/javascript/object/object-3')
+
+const Array1 = () => import('views/javascript/array/array-1')
+const Array2 = () => import('views/javascript/array/array-2')
+
+const Function1 = () => import('views/javascript/function/function-1')
+const Function2 = () => import('views/javascript/function/function-2')
+const Function3 = () => import('views/javascript/function/function-3')
 
 export default {
   JavaScript,
@@ -23,5 +29,9 @@ export default {
   ReferenceType4,
   Object1,
   Object2,
-  Object3
+  Array1,
+  Array2,
+  Function1,
+  Function2,
+  Function3
 }

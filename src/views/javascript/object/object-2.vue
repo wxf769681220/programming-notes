@@ -190,7 +190,7 @@
       </div>
     </div>
     <div class="card-column">
-      <div class="card-column-title">4、寄生构造函数</div>
+      <div class="card-column-title">4、寄生构造函数模式</div>
       <div class="card-group">
         <div class="card">
           <div class="card-header">
@@ -252,110 +252,31 @@
             </pre>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header">
-            <strong>toFixed()</strong> 方法：指定小数点后的位数，将数字转为字符串。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  var num = 123456.789
-
-  // 对结果会适当地进行四舍五入或填充零
-  num.toFixed(0)  => "123457"
-  num.toFixed(2)  => "123456.79"
-  num.toFixed(5)  => "123456.78900"
-</code>
-            </pre>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <strong>toExponential()</strong> 方法：使用科学计数法，将数字转为字符串。它接收一个参数来指定小数点后的位数。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  var num = 123456.789
-
-  // 对结果会适当地进行四舍五入
-  num.toExponential(1)  => "1.2e+5"
-  num.toExponential(7)  => "1.2345679e+5"
-</code>
-            </pre>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <strong>toPrecision()</strong> 方法：指定有效数字位数，将数字转为字符串。若有效数字位数小于数字整数部分的位数，则使用指数形式。
-            若有效数字位数大于数字整数部分的位数，则用零在小数位补位。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  var num = 123456.789
-
-  // 对结果会适当地进行四舍五入或填充零
-  num.toPrecision(4)  => "1.235e+5"
-  num.toPrecision(7)  => "123456.8"
-  num.toPrecision(10) => "123456.7890"
-</code>
-            </pre>
-          </div>
-        </div>
       </div>
     </div>
     <div class="card-column">
-      <div class="card-column-title">5、数据类型检测</div>
+      <div class="card-column-title">5、稳妥构造函数模式</div>
       <div class="card-group">
         <div class="card">
           <div class="card-header">
-            <strong class="bold">typeof 操作符</strong>用于检测数据类型时，可能返回以下字符串：
+            <strong class="bold">稳妥对象</strong>：没有公共属性，其属性不引用 this。稳妥对象何时最一些安全的环境中(这些环境会禁止使用 this 和 new)。
           </div>
           <div class="card-body">
             <pre v-highlight>
 <code>
-  // 基本类型值
-  typeof ""          => "string"
-  typeof 10          => "number"
-  typeof false       => "boolean"
-  typeof undefined   => "undefined"
-  typeof null        => "object"
+  function Person(name, age) {
+    var o = new Object()
 
-  // 引用类型值
-  typeof new Function()     => "function"
-  typeof new Object()       => "object"
-  typeof new Array()        => "object"
-  typeof new Date()         => "object"
-  typeof new RegExp()       => "object"
-</code>
-            </pre>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <strong class="bold">instanceof 操作符</strong>用于检测引用类型的值（对象）的类型。若对象是给定引用类型的实例，则返回 true。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  // 用于基本类型值时，始终返回 false
-  null instanceof Object    => false
+    // 在这里可以定义私有变量
+    o.say = function() {
+      return name
+    }
 
-  // 用于基本包装类型
-  Object("") instanceof String      => true
-  Object(10) instanceof Number      => true
-  Object(false) instanceof Boolean  => true
+    return o
+  }
 
-  // 用于引用类型
-  new Object() instanceof Object      => true
-  new Function() instanceof Function  => true
-  new Array() instanceof Array        => true
-  new Date() instanceof Date          => true
-  new RegExp() instanceof RegExp      => true
-
-  // 用于自定义类型
-  new Person() instanceof Person      => true
+  var p = Person('lee', 20)
+  p.say() => 'lee'
 </code>
             </pre>
           </div>

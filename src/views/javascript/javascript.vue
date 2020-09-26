@@ -2,20 +2,20 @@
   <div class="javascript">
     <Menu class="menu-wrapper" router :collapse="isCollapse">
       <MenuItem index="dataTypes" to="javascript/dataTypes">
-        <i class="el-icon-grape"></i>
+        <i class="el-icon-s-promotion"></i>
         <span slot="title">数据类型</span>
       </MenuItem>
       <MenuItem index="operators" to="javascript/operators">
-        <i class="el-icon-menu"></i>
+        <i class="el-icon-s-promotion"></i>
         <span slot="title">运算符</span>
       </MenuItem>
       <MenuItem index="statements" to="javascript/statements">
-        <i class="el-icon-menu"></i>
+        <i class="el-icon-s-promotion"></i>
         <span slot="title">语句</span>
       </MenuItem>
       <Submenu index="referenceType">
         <template slot="title">
-          <i class="el-icon-location"></i>
+          <i class="el-icon-s-promotion"></i>
           <span slot="title">引用类型</span>
         </template>
         <MenuItem index="referenceType-1" to="javascript/referenceType1-1">时间日期</MenuItem>
@@ -25,12 +25,28 @@
       </Submenu>
       <Submenu index="object">
         <template slot="title">
-          <i class="el-icon-location"></i>
-          <span slot="title">引用类型</span>
+          <i class="el-icon-s-promotion"></i>
+          <span slot="title">对象</span>
         </template>
-        <MenuItem index="object-1" to="javascript/object-1">对象及对象属性</MenuItem>
+        <MenuItem index="object-1" to="javascript/object-1">对象</MenuItem>
         <MenuItem index="object-2" to="javascript/object-2">面向对象的程序设计</MenuItem>
-        <MenuItem index="object-3" to="javascript/object-3">其他</MenuItem>
+      </Submenu>
+      <Submenu index="array">
+        <template slot="title">
+          <i class="el-icon-s-promotion"></i>
+          <span slot="title">数组</span>
+        </template>
+        <MenuItem index="array-1" to="javascript/array-1">数组</MenuItem>
+        <MenuItem index="array-2" to="javascript/array-2">数组方法</MenuItem>
+      </Submenu>
+      <Submenu index="function">
+        <template slot="title">
+          <i class="el-icon-s-promotion"></i>
+          <span slot="title">函数</span>
+        </template>
+        <MenuItem index="function-1" to="javascript/function-1">函数</MenuItem>
+        <MenuItem index="function-2" to="javascript/function-2">原型、原型链、继承</MenuItem>
+        <MenuItem index="function-3" to="javascript/function-3">高级函数</MenuItem>
       </Submenu>
     </Menu>
     <section

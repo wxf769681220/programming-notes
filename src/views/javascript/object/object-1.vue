@@ -25,11 +25,15 @@
   person.say = function() {
     return this.name + this.age
   }
+  // 属性的字符串表示
+  person['first name'] = "alex"
+  person['5'] = true
+  person[''] = null
 
   // 字面量表示法
   var person2 = {
     // 含特殊字符使用字符串
-    'first name': alex,
+    'first name': 'alex',
     // 数字值属性自动转换为字符串
     5: true
     // 即使是空字符串也是允许的
@@ -266,6 +270,31 @@
       }
     }
   })
+</code>
+            </pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-column">
+      <div class="card-column-title">4、对象序列化</div>
+      <div class="card-group">
+        <div class="card">
+          <div class="card-header">
+            ECMAScript5 提供了内置函数 <strong>JSON.stringify()</strong> 和 <strong>JSON.parse()</strong> 用来序列化和还原 javascript 对象，这些方法都使用 JSON 作为数据交换格式。
+          </div>
+          <div class="card-body">
+            <pre v-highlight>
+<code>
+  var o = { x: 1, y: 2, z: 3 }
+
+  // 对象转字符串
+  var s = JSON.stringify(o)
+  s => '{ x: 1, y: 2, z: 3 }'
+
+  // 字符串转对象
+  var p = JSON.parse(s)
+  p => { x: 1, y: 2, z: 3 }
 </code>
             </pre>
           </div>

@@ -4,6 +4,7 @@ isFinity() 当一个数值位于最小值与最大值之间时会返回 true。
 isNaN() 非数值。任何不能转换为数值的值会导致该函数返回 true。
 
 
+
 #6.for-in 语句
 for-in 语句用来枚举对象属性。
 for (var prop in o) {
