@@ -24,6 +24,12 @@ const Navigator = () => import('views/javascript/bom/navigator')
 const Screen = () => import('views/javascript/bom/screen')
 const History = () => import('views/javascript/bom/history')
 
+const Dom1 = () => import('views/javascript/dom/dom-1')
+const Dom2 = () => import('views/javascript/dom/dom-2')
+const Dom3 = () => import('views/javascript/dom/dom-3')
+const Dom4 = () => import('views/javascript/dom/dom-4')
+const Dom5 = () => import('views/javascript/dom/dom-5')
+
 export default {
   JavaScript,
   DataTypes,
@@ -44,5 +50,10 @@ export default {
   Location,
   Navigator,
   Screen,
-  History
+  History,
+  Dom1,
+  Dom2,
+  Dom3,
+  Dom4,
+  Dom5
 }

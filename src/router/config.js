@@ -84,6 +84,26 @@ const routes = [
       {
         path: '/javascript/history',
         component: Js.History
+      },
+      {
+        path: '/javascript/dom-1',
+        component: Js.Dom1
+      },
+      {
+        path: '/javascript/dom-2',
+        component: Js.Dom2
+      },
+      {
+        path: '/javascript/dom-3',
+        component: Js.Dom3
+      },
+      {
+        path: '/javascript/dom-4',
+        component: Js.Dom4
+      },
+      {
+        path: '/javascript/dom-5',
+        component: Js.Dom5
       }
     ]
   }

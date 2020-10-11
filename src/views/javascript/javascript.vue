@@ -59,6 +59,17 @@
         <MenuItem index="screen">Screen 对象</MenuItem>
         <MenuItem index="history">History 对象</MenuItem>
       </Submenu>
+      <Submenu index="dom">
+        <template slot="title">
+          <i class="el-icon-share"></i>
+          <span slot="title">DOM</span>
+        </template>
+        <MenuItem index="dom-1">节点</MenuItem>
+        <MenuItem index="dom-2">节点类型</MenuItem>
+        <MenuItem index="dom-3">DOM扩展</MenuItem>
+        <MenuItem index="dom-4">事件处理程序</MenuItem>
+        <MenuItem index="dom-5">DOM事件</MenuItem>
+      </Submenu>
     </Menu>
     <section
       class="content-wrapper"
