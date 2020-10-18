@@ -2,21 +2,17 @@
   <div class="javascript">
     <Menu class="menu-wrapper" router :collapse="isCollapse">
       <MenuItem index="dataTypes">
-        <i class="el-icon-s-promotion"></i>
-        <span slot="title">数据类型</span>
+        <strong slot="title">数据类型</strong>
       </MenuItem>
       <MenuItem index="operators">
-        <i class="el-icon-s-promotion"></i>
-        <span slot="title">运算符</span>
+        <strong slot="title">运算符</strong>
       </MenuItem>
       <MenuItem index="statements">
-        <i class="el-icon-s-promotion"></i>
-        <span slot="title">语句</span>
+        <strong slot="title">语句</strong>
       </MenuItem>
       <Submenu index="referenceType">
         <template slot="title">
-          <i class="el-icon-s-promotion"></i>
-          <span slot="title">引用类型</span>
+          <strong slot="title">引用类型</strong>
         </template>
         <MenuItem index="referenceType-1">时间日期</MenuItem>
         <MenuItem index="referenceType-2">正则表达式</MenuItem>
@@ -25,24 +21,21 @@
       </Submenu>
       <Submenu index="object">
         <template slot="title">
-          <i class="el-icon-s-promotion"></i>
-          <span slot="title">对象</span>
+          <strong slot="title">对象</strong>
         </template>
         <MenuItem index="object-1">对象</MenuItem>
         <MenuItem index="object-2">面向对象的程序设计</MenuItem>
       </Submenu>
       <Submenu index="array">
         <template slot="title">
-          <i class="el-icon-s-promotion"></i>
-          <span slot="title">数组</span>
+          <strong slot="title">数组</strong>
         </template>
         <MenuItem index="array-1">数组</MenuItem>
         <MenuItem index="array-2">数组方法</MenuItem>
       </Submenu>
       <Submenu index="function">
         <template slot="title">
-          <i class="el-icon-s-promotion"></i>
-          <span slot="title">函数</span>
+          <strong slot="title">函数</strong>
         </template>
         <MenuItem index="function-1">函数</MenuItem>
         <MenuItem index="function-2">原型、原型链、继承</MenuItem>
@@ -50,8 +43,7 @@
       </Submenu>
       <Submenu index="bom">
         <template slot="title">
-          <i class="el-icon-share"></i>
-          <span slot="title">BOM</span>
+          <strong slot="title">BOM</strong>
         </template>
         <MenuItem index="window">Window 对象</MenuItem>
         <MenuItem index="navigator">Navigator 对象</MenuItem>
@@ -61,8 +53,7 @@
       </Submenu>
       <Submenu index="dom">
         <template slot="title">
-          <i class="el-icon-share"></i>
-          <span slot="title">DOM</span>
+          <strong slot="title">DOM</strong>
         </template>
         <MenuItem index="dom-1">节点</MenuItem>
         <MenuItem index="dom-2">节点类型</MenuItem>

@@ -20,7 +20,7 @@ export default {
   name: 'app',
   data() {
     return {
-      isCollapse: true
+      isCollapse: false
     }
   },
   components: {
