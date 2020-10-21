@@ -38,7 +38,7 @@ export default {
   padding: 8px 0
   width: 100%
   color: #fff
-  background-color: #24292e
+  background-color: #eff1f5
   .logo
     margin: 0 20px
     width: 150px

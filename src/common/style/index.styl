@@ -1,4 +1,7 @@
 @import 'reset.styl'
+ul,
+ol
+  margin-left: 20px
 ul
   ul,
 ol
@@ -8,11 +11,18 @@ sup
   vertical-align: super
   font-size: 60%
 strong
-  color: #000
+  // color: #000
   font-weight: bolder
   &.danger
     font-weight: bolder
     color: red
+
+.clearfix::after,
+.clearfix::before
+  display: block
+  clear: both
+  content: ""
+
 .dataTypes,
 .operators,
 .statements,
@@ -38,16 +48,21 @@ strong
 .dom-3,
 .dom-4,
 .dom-5
-  display: flex
-  flex-wrap: wrap
+  // display: flex
+  // flex-wrap: wrap
   padding-top: 20px
   .card-column
+    float: left
     position: relative
-    margin-right: 20px
-    margin-bottom: 20px
-    flex: 0 0 450px
-    width: 450px
-    height: calc(100vh - 112px)
+    margin-bottom: 1%
+    margin-left: 2%
+    width: 17.6%
+    // position: relative
+    // margin-right: 20px
+    // margin-bottom: 20px
+    // flex: 0 0 450px
+    // width: 450px
+    height: auto
     background-color: rgba(239, 241, 245, 1)
     border: 1px solid rgba(225, 228, 232, 1)
     border-radius: 6px
@@ -61,30 +76,32 @@ strong
       font-weight: 600
       color: #24292e
     .card-group
-      position: absolute
-      top: 40px
-      left: 0
-      bottom: 0
+      position: relative
+      // top: 40px
+      // left: 0
+      // bottom: 0
       padding: 0 8px
-      width: 100%
-      overflow-x: hidden
-      overflow-y: scroll
+      // width: 100%
+      // overflow-x: hidden
+      // overflow-y: scroll
       .card
         display: block
         margin-bottom: 8px
         padding: 8px 0
         height: auto
+        color: #000
         background-color: #fff
         border: 1px solid rgba(225, 228, 232, 1)
         border-radius: 6px
         overflow: hidden
         .card-header
           padding: 8px 16px
-          line-height: 1.2
+          line-height: 1.5
           font-size: 14px
           color: rgb(36, 41, 46)
           text-align: justify
-          ul,
-          ol
-           margin-top: 10px
-           line-height: 24px
+          border-bottom: 1px solid #eee
+        .card-body
+          padding: 10px
+          font-size: 14px
+          line-height: 1.5
