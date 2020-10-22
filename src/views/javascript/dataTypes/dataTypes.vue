@@ -181,11 +181,10 @@
       <div class="card-group">
         <div class="card">
           <div class="card-header">
-            <strong>toString()</strong> 方法。除了 null 和 undefined
-            之外，任何其他值都有 toString()
-            方法。它可以接收一个参数，表示输出数值的基数。
+            <strong class="danger">toString()</strong> 方法。
           </div>
           <div class="card-body">
+            <p>除了 null 和 undefined 之外，任何其他值都有 toString() 方法。该方法可以接收一个参数，表示输出数值的基数。</p>
             <pre v-highlight>
 <code>
   var num = 10
@@ -201,10 +200,10 @@
         </div>
         <div class="card">
           <div class="card-header">
-            <strong>toFixed()</strong>
-            方法：指定小数点后的位数，将数字转为字符串。
+            <strong  class="danger">toFixed()</strong> 方法。
           </div>
           <div class="card-body">
+            <p>指定小数点后的位数，将数字转为字符串。</p>
             <pre v-highlight>
 <code>
   var num = 123456.789
@@ -219,10 +218,10 @@
         </div>
         <div class="card">
           <div class="card-header">
-            <strong>toExponential()</strong>
-            方法：使用科学计数法，将数字转为字符串。它接收一个参数来指定小数点后的位数。
+            <strong class="danger">toExponential()</strong> 方法。
           </div>
           <div class="card-body">
+            <p>使用科学计数法，将数字转为字符串。该方法接收一个参数来指定小数点后的位数。</p>
             <pre v-highlight>
 <code>
   var num = 123456.789
@@ -236,11 +235,10 @@
         </div>
         <div class="card">
           <div class="card-header">
-            <strong>toPrecision()</strong>
-            方法：指定有效数字位数，将数字转为字符串。若有效数字位数小于数字整数部分的位数，则使用指数形式。
-            若有效数字位数大于数字整数部分的位数，则用零在小数位补位。
+            <strong class="danger">toPrecision()</strong> 方法。
           </div>
           <div class="card-body">
+            <p>指定有效数字位数，将数值转为字符串。若有效数字位数小于数字整数部分的位数，则使用指数形式。若有效数字位数大于数字整数部分的位数，则用零在小数位补位。</p>
             <pre v-highlight>
 <code>
   var num = 123456.789
@@ -260,10 +258,10 @@
       <div class="card-group">
         <div class="card">
           <div class="card-header">
-            <strong class="bold">typeof 操作符</strong
-            >用于检测数据类型时，可能返回以下字符串：
+            <strong>typeof 操作符</strong>
           </div>
           <div class="card-body">
+            <p>用于检测数据类型时，typeof 操作符可能返回以下字符串：</p>
             <pre v-highlight>
 <code>
   // 基本类型值
@@ -279,20 +277,22 @@
   typeof new Array()        => "object"
   typeof new Date()         => "object"
   typeof new RegExp()       => "object"
+
+  // 自定义类型
+  typeof new Person()       => "object"
 </code>
             </pre>
           </div>
         </div>
         <div class="card">
           <div class="card-header">
-            <strong class="bold">instanceof 操作符</strong
-            >用于检测引用类型的值（对象）的类型。若对象是给定引用类型的实例，则返回
-            true。
+            <strong class="bold">instanceof 操作符</strong>
           </div>
           <div class="card-body">
+            <p>用于检测引用类型的值（对象）的类型。若对象是给定引用类型的实例，则返回 true。instanceof 操作符用于基本类型值时，始终返回 false。</p>
             <pre v-highlight>
 <code>
-  // 用于基本类型值时，始终返回 false
+  // 用于基本类型值
   null instanceof Object    => false
 
   // 用于基本包装类型
@@ -306,28 +306,38 @@
   new Array() instanceof Array        => true
   new Date() instanceof Date          => true
   new RegExp() instanceof RegExp      => true
+
+  // 自定义类型
+  new Person() instanceof Person      => true
 </code>
             </pre>
           </div>
         </div>
         <div class="card">
           <div class="card-header">
-            检测对象具体类型。
+            <strong>Object.prototype.toString.call()</strong>
           </div>
           <div class="card-body">
+            <p>用于检测对象类型。</p>
             <pre v-highlight>
-              <code>
-                // 是否是一个函数
-                function isFunction(o) {
-                  return Object.prototype.toString.call(o) === "[object Function]"
-                }
+<code>
+  Object.prototype.toString.call("")          // [object String]
+  Object.prototype.toString.call(10)          // [object Number]
+  Object.prototype.toString.call(true)        // [object Boolean]
+  Object.prototype.toString.call(undefined)   // [object Undefined]
+  Object.prototype.toString.call(null)        // [object Null]
 
-                // 是否是一个数组
-                // 类似于 Array.isArray() 方法
-                function isArray(o) {
-                  return Object.prototype.toString.call(o) === "[object Array]"
-                }
-              </code>
+  Object.prototype.toString.call({})           // [object Object]
+  Object.prototype.toString.call(function(){}) // [object Function]
+  Object.prototype.toString.call([])           // [object Array]
+
+  Object.prototype.toString.call(new Date)     // [object Date]
+  Object.prototype.toString.call(/\d/)         // [object RegExp]
+
+  // 自定义类型
+  function Person(){}
+  Object.prototype.toString.call(new Person)   // [object Object]
+</code>
             </pre>
           </div>
         </div>
@@ -337,8 +347,6 @@
 </template>
 
 <script>
-// import { reflower } from 'common/js/dom'
-
 export default {
   name: 'dataTypes',
   data() {
@@ -431,11 +439,7 @@ export default {
       ]
     }
   },
-  mounted() {
-    this.$nextTick(() => {
-      // reflower(this.$refs.dataTypes)
-    })
-  }
+  mounted() {}
 }
 </script>
 
