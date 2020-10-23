@@ -1,14 +1,15 @@
 <template>
-  <div class="referenceType-4">
+  <div class="referenceType-4" ref="referenceType4">
     <div class="card-column">
-      <div class="card-column-title">1、Math 对象</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header">
-            Math对象的属性：数学计算中可能用到的特殊值。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+      <div class="card-column-content">
+        <div class="card-column-title">1、Math 对象</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <strong>Math 对象的属性：数学计算中可能用到的特殊值。</strong>
+            </div>
+            <div class="card-body">
+              <pre v-highlight>
 <code>
   Math.E               // 自然对数的底数，即常量e的值
 
@@ -39,20 +40,23 @@
   Math.sin(x)          // 返回x的正弦值
   Math.tan(x)          // 返回x的正切值
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="card-column">
-      <div class="card-column-title">2、确定最大值与最小值的方法</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header">
-            <strong>max() 和 min()</strong> 方法。它们可以接收任何数量的参数，并确定数值中的最大值或最小值。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+      <div class="card-column-content">
+        <div class="card-column-title">2、确定最大值与最小值的方法</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <strong class="danger">max()</strong> 和 <strong class="danger">min()</strong> 方法。
+            </div>
+            <div class="card-body">
+              <p>它们可以接收任何数量的参数，并确定数值中的最大值或最小值。</p>
+              <pre v-highlight>
 <code>
   // 最大值
   Math.max(1, 2, 3, 4, 5) => 5
@@ -60,40 +64,37 @@
   // 最小值
   Math.min(1, 2, 3, 4, 5) => 1
 </code>
-            </pre>
-          </div>
-          <div class="card-header">
-            确定数组中的最大值或最小值。可使用 <strong>apply()</strong> 方法。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+              </pre>
+              <p>确定数组中的最大值或最小值。可使用 <strong class="danger">apply()</strong> 方法。</p>
+              <pre v-highlight>
 <code>
   var arr = [1, 2, 3, 4, 5]
 
   // 最大值
-  Math.max.apply(Math, arr) => 5
+  Math.max.apply(null, arr) => 5
 
   // 最小值
-  Math.min.apply(Math, arr) => 1
+  Math.min.apply(null, arr) => 1
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="card-column">
-      <div class="card-column-title">3、舍入方法</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header">
-            <ul>
-              <li>1、<strong>Math.ceil()</strong> ：向上舍入，数值舍入为最近的整数。</li>
-              <li>2、<strong>Math.floor()</strong>：向下舍入，数值舍入为最近的整数。</li>
-              <li>3、<strong>Math.round()</strong>：标准舍入，数值四舍五入为最近的整数。</li>
-            </ul>
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+      <div class="card-column-content">
+        <div class="card-column-title">3、舍入方法</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header"></div>
+            <div class="card-body">
+              <ol>
+                <li><strong class="danger">Math.ceil()</strong> ：向上舍入，数值舍入为最近的整数。</li>
+                <li><strong class="danger">Math.floor()</strong>：向下舍入，数值舍入为最近的整数。</li>
+                <li><strong class="danger">Math.round()</strong>：标准舍入，数值四舍五入为最近的整数。</li>
+              </ol>
+              <pre v-highlight>
 <code>
   // 清除小数位，整数位+1
   Math.ceil(1.1) => 2
@@ -110,20 +111,23 @@
   Math.round(1.5) => 2
   Math.round(1.9) => 2
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="card-column">
-      <div class="card-column-title">4、随机方法</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header">
-            <strong>random() </strong> 方法。始终返回大于等于 0 小于 1 的随机数。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+      <div class="card-column-content">
+        <div class="card-column-title">4、随机方法</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <strong class="danger">random() </strong> 方法。
+            </div>
+            <div class="card-body">
+              <p>始终返回大于等于 0 小于 1 的随机数。</p>
+              <pre v-highlight>
 <code>
   // 从某个范围内随机选择一个数
   Math.floor(Math.random() * 可能值的总数 + 第一个可能的值)
@@ -138,13 +142,9 @@
   }
   randomValueFrom(0, 10)
 </code>
-            </pre>
-          </div>
-          <div class="card-header">
-            从数组中随机抽取一个数组项。（实质上就是索引的随机）
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+              </pre>
+              <p>从数组中随机抽取一个数组项。</p>
+              <pre v-highlight>
 <code>
   // 封装函数
   function randomValueFrom(lowerValue, upperValue) {
@@ -155,7 +155,8 @@
   var arr = ['red', 'green', 'black', 'blue']
   arr[randomValueFrom(0, arr.length-1)]
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
         </div>
       </div>
@@ -164,8 +165,11 @@
 </template>
 
 <script>
+import reflowerMixins from 'common/js/mixins/reflower.js'
+
 export default {
-  name: 'referenceType-4'
+  name: 'referenceType4',
+  mixins: [reflowerMixins]
 }
 </script>
 

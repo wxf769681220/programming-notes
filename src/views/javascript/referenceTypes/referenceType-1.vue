@@ -1,42 +1,44 @@
 <template>
-  <div class="referenceType-1">
+  <div class="referenceType-1" ref="referenceType1">
     <div class="card-column">
-      <div class="card-column-title">1、日期对象</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header">
-            <strong class="bold">Date 类型。</strong>使用自 UTC（Coordinated Universal Time 国际协调时间）1970年1月1日午夜（零时）开始经过的毫秒数来保存时间。
-            创建一个日期对象可以使用 new 操作符 + （Date）构造函数。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+      <div class="card-column-content">
+        <div class="card-column-title">1、日期对象</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <strong class="bold">Date 类型</strong>。
+            </div>
+            <div class="card-body">
+              <p>使用自 UTC（Coordinated Universal Time 国际协调时间）1970年1月1日午夜（零时）开始经过的毫秒数来保存时间。
+                创建一个日期对象可以使用 new 操作符 + （Date）构造函数。</p>
+              <pre v-highlight>
 <code>
   var time = new Date()
   time => // 自动获取当前日期和时间
 </code>
-            </pre>
-          </div>
-          <div class="card-header">向 Date 构造函数中传递表示日期类型的字符串，可以创建一个保存特定日期和时间的对象。</div>
-          <div class="card-body">
-            <pre v-highlight>
+              </pre>
+              <p>向 Date 构造函数中传递表示日期类型的字符串，可以创建一个保存特定日期和时间的对象。</p>
+              <pre v-highlight>
 <code>
   var time = new Date('2020-01-01')
-  time => // 保存一个时间对象
 </code>
-            </pre>
+             </pre>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="card-column">
-      <div class="card-column-title">2、日期方法</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header">
-            <strong>Date.parse()</strong> 方法。它接受一个表示日期的字符串参数，返回该日期的毫秒数。如果该字符串不能表示一个日期，则返回 NaN。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+      <div class="card-column-content">
+        <div class="card-column-title">2、日期方法</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <strong class="danger">Date.parse()</strong> 方法。
+            </div>
+            <div class="card-body">
+              <p>该方法接收一个表示日期的字符串参数，返回该日期的毫秒数。如果该字符串不能表示一个日期，则返回 NaN。</p>
+              <pre v-highlight>
 <code>
   // 获取当前某一时刻的毫秒数
   var time1 = Date.parse(new Date())
@@ -48,16 +50,17 @@
   var time3 = Date.parse('one')
   time3 => NaN
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <strong>Date.UTC()</strong> 方法。该方法同样返回表示日期的毫秒数。这个方法的参数分别是年份、基于 0 的月份(0-11)、月中的哪一天(1-31)、小时数(0-23)、分钟、秒以及毫秒数。
-            其中年份和月是必须的；若没提供月中的哪一天，则默认为 1；若省略其他参数，则统统默认为 0。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+          <div class="card">
+            <div class="card-header">
+              <strong class="danger">Date.UTC()</strong> 方法。
+            </div>
+            <div class="card-body">
+              <p>该方法同样返回表示日期的毫秒数。这个方法的参数分别是年份、基于 0 的月份(0-11)、月中的哪一天(1-31)、小时数(0-23)、分钟、秒以及毫秒数。
+                其中年份和月是必须的；若没提供月中的哪一天，则默认为 1；若省略其他参数，则统统默认为 0。</p>
+              <pre v-highlight>
 <code>
   // GMT时间：2020年1月1日午夜零时
   var time1 = Date.UTC(2020, 0)
@@ -65,15 +68,16 @@
   // GMT时间：2020年2月1日下午1时11分11秒
   var time2 = Date.UTC(2020, 1, 1, 13, 11, 11)
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <strong>Date.now()</strong> 方法。返回调用该方法时的日期时间和时间的毫秒数。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+          <div class="card">
+            <div class="card-header">
+              <strong class="danger">Date.now()</strong> 方法。
+            </div>
+            <div class="card-body">
+              <p>该方法返回调用该方法时的日期时间和时间的毫秒数。</p>
+              <pre v-highlight>
 <code>
   // 获取当前时间的毫秒数
   var time1 = Date.now()
@@ -81,41 +85,43 @@
   // 等价于
   var time2 = Date.parse(new Data())
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <strong>Date.toJSON()</strong> 方法。该方法返回日期的一个字符串表示形式。（值与调用它的toISOString()方法的结果一样）
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+          <div class="card">
+            <div class="card-header">
+              <strong class="danger">Date.toJSON()</strong> 方法。该方法返回日期的一个字符串表示形式。（值与调用它的toISOString()方法的结果一样）
+            </div>
+            <div class="card-body">
+              <pre v-highlight>
 <code>
-var now = new Date()
+  var now = new Date()
 
-// 当前日期的字符串表示
-now.toJSON() => '2020-09-19T02:12:54.121Z'
+  // 当前日期的字符串表示
+  now.toJSON() => '2020-09-19T02:12:54.121Z'
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="card-column">
-      <div class="card-column-title">3、日期格式化方法</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header">
-            <ul>
-              <li>1、<strong>toDateString()</strong>：以特定格式显示星期几、月、日和年。</li>
-              <li>2、<strong>toTImeString()</strong>：以特定格式显示时、分、秒和时区。</li>
-              <li>3、<strong>toLocaleDateString()</strong>：以特定地区格式显示星期几、月、日和年。</li>
-              <li>4、<strong>toLocaleTImeString()</strong>：以特定地区格式显示时、分、秒和时区。</li>
-              <li>5、<strong>toUTCString()</strong>：以特定格式显示完整的UTC日期。</li>
-            </ul>
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+      <div class="card-column-content">
+        <div class="card-column-title">3、日期格式化方法</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <ol>
+                <li><strong class="danger">toDateString()</strong>：以特定格式显示星期几、月、日和年。</li>
+                <li><strong class="danger">toTImeString()</strong>：以特定格式显示时、分、秒和时区。</li>
+                <li><strong class="danger">toLocaleDateString()</strong>：以特定地区格式显示星期几、月、日和年。</li>
+                <li><strong class="danger">toLocaleTImeString()</strong>：以特定地区格式显示时、分、秒和时区。</li>
+                <li><strong class="danger">toUTCString()</strong>：以特定格式显示完整的UTC日期。</li>
+              </ol>
+            </div>
+            <div class="card-body">
+              <pre v-highlight>
 <code>
   var time = new Date()
 
@@ -125,24 +131,26 @@ now.toJSON() => '2020-09-19T02:12:54.121Z'
   time.toLocaleTimeString() => // 下午2:07:42
   time.toUTCString()        => // Fri, 05 Jun 2020 06:08:00 GMT
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="card-column">
-      <div class="card-column-title">4、继承 Object 方法</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header">
-            <ul>
-              <li>1、<strong>toString()</strong>：通常返回带有时区信息的日期和时间。</li>
-              <li>2、<strong>toLocaleString()</strong>：会按照与浏览器设置的地区相适应的格式返回日期和时间。</li>
-              <li>3、<strong>valueOf()</strong>：不返回字符串，而是返回日期的毫秒数。因此可以方便的使用比较操作符来进行日期比较。</li>
-            </ul>
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+      <div class="card-column-content">
+        <div class="card-column-title">4、继承 Object 方法</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <ol>
+                <li><strong class="danger">toString()</strong>：通常返回带有时区信息的日期和时间。</li>
+                <li><strong class="danger">toLocaleString()</strong>：会按照与浏览器设置的地区相适应的格式返回日期和时间。</li>
+                <li><strong class="danger">valueOf()</strong>：不返回字符串，而是返回日期的毫秒数。因此可以方便的使用比较操作符来进行日期比较。</li>
+              </ol>
+            </div>
+            <div class="card-body">
+              <pre v-highlight>
 <code>
   var time1 = new Date(2020, 0)
   var time2 = new Date(2020, 1)
@@ -151,63 +159,66 @@ now.toJSON() => '2020-09-19T02:12:54.121Z'
   // 后台会自动调用 valueOf() 方法
   time1 &lt; time2 => true
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <div class="card-column">
-      <div class="card-column-title">5、日期/时间组件方法</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header"></div>
-          <div class="card-body">
-            <pre v-highlight>
+      <div class="card-column-content">
+        <div class="card-column-title">5、日期/时间组件方法</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header"></div>
+            <div class="card-body">
+              <pre v-highlight>
 <code>
-  <strong>getTime()</strong> => // 返回表示日期的毫秒数，与valueOf()返回相同的值
-  <strong>setTime()</strong> => // 以毫秒数设置日期，会改变这整个日期
+  <strong class="danger">getTime()</strong> => // 返回表示日期的毫秒数，与valueOf()返回相同的值
+  <strong class="danger">setTime()</strong> => // 以毫秒数设置日期，会改变这整个日期
 
-  <strong>getFullYear()</strong> => // 返回4位数的年份
-  <strong>setFullYear()</strong> => // 设置年份。传入的年份值必须是4位数
-  <strong>getUTCFullYear()</strong>
-  <strong>setUTCFullYear()</strong>
+  <strong class="danger">getFullYear()</strong> => // 返回4位数的年份
+  <strong class="danger">setFullYear()</strong> => // 设置年份。传入的年份值必须是4位数
+  <strong class="danger">getUTCFullYear()</strong>
+  <strong class="danger">setUTCFullYear()</strong>
 
-  <strong>getMonth()</strong> => // 返回日期中的月份(0-11)
-  <strong>setMonth()</strong> => // 设置月份。必须大于0，超过11则增加年份
-  <strong>getUTCMonth()</strong>
-  <strong>setUTCMonth()</strong>
+  <strong class="danger">getMonth()</strong> => // 返回日期中的月份(0-11)
+  <strong class="danger">setMonth()</strong> => // 设置月份。必须大于0，超过11则增加年份
+  <strong class="danger">getUTCMonth()</strong>
+  <strong class="danger">setUTCMonth()</strong>
 
-  <strong>getDate()</strong> => // 返回日期月份中的天数
-  <strong>setDate()</strong> => // 设置天数。超过该月中应有天数时，则增加月份
-  <strong>getUTCDate()</strong>
-  <strong>setUTCDate()</strong>
+  <strong class="danger">getDate()</strong> => // 返回日期月份中的天数
+  <strong class="danger">setDate()</strong> => // 设置天数。超过该月中应有天数时，则增加月份
+  <strong class="danger">getUTCDate()</strong>
+  <strong class="danger">setUTCDate()</strong>
 
-  <strong>getDay()</strong>    => // 返回日期中星期几（0表示星期日、6表示星期六）
-  <strong>getUTCDay()</strong>
+  <strong class="danger">getDay()</strong>    => // 返回日期中星期几（0表示星期日、6表示星期六）
+  <strong class="danger">getUTCDay()</strong>
 
-  <strong>getHours()</strong>  => // 返回日期中的小时数(0-23)
-  <strong>setHours()</strong>  => // 设置小时数。超过23则增加天数
-  <strong>getUTCHours()</strong>
-  <strong>setUTCHours()</strong>
+  <strong class="danger">getHours()</strong>  => // 返回日期中的小时数(0-23)
+  <strong class="danger">setHours()</strong>  => // 设置小时数。超过23则增加天数
+  <strong class="danger">getUTCHours()</strong>
+  <strong class="danger">setUTCHours()</strong>
 
-  <strong>getMinutes()</strong> => // 返回日期中的分钟数(0-59)
-  <strong>setMinutes()</strong> => // 设置分钟。超过59则增加小时数
-  <strong>getUTCMinutes()</strong>
-  <strong>setUTCMinutes()</strong>
+  <strong class="danger">getMinutes()</strong> => // 返回日期中的分钟数(0-59)
+  <strong class="danger">setMinutes()</strong> => // 设置分钟。超过59则增加小时数
+  <strong class="danger">getUTCMinutes()</strong>
+  <strong class="danger">setUTCMinutes()</strong>
 
-  <strong>getSeconds()</strong> => // 返回日期中的秒数(0-59)
-  <strong>setSeconds()</strong> => // 设置秒数。超过59则增加分钟数
-  <strong>getUTCSeconds()</strong>
-  <strong>setUTCSeconds()</strong>
+  <strong class="danger">getSeconds()</strong> => // 返回日期中的秒数(0-59)
+  <strong class="danger">setSeconds()</strong> => // 设置秒数。超过59则增加分钟数
+  <strong class="danger">getUTCSeconds()</strong>
+  <strong class="danger">setUTCSeconds()</strong>
 
-  <strong>getMilliseconds()</strong> => // 返回日期中的毫秒数。
-  <strong>setMilliseconds()</strong> => // 设置日期中的毫秒数
-  <strong>getUTCMilliseconds()</strong>
-  <strong>setUTCMilliseconds()</strong>
+  <strong class="danger">getMilliseconds()</strong> => // 返回日期中的毫秒数。
+  <strong class="danger">setMilliseconds()</strong> => // 设置日期中的毫秒数
+  <strong class="danger">getUTCMilliseconds()</strong>
+  <strong class="danger">setUTCMilliseconds()</strong>
 
-  <strong>getTimezoneOffset()</strong> => // 返回本地时间与UTC时间相差的分钟数
+  <strong class="danger">getTimezoneOffset()</strong> => // 返回本地时间与UTC时间相差的分钟数
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
         </div>
       </div>
@@ -216,8 +227,10 @@ now.toJSON() => '2020-09-19T02:12:54.121Z'
 </template>
 
 <script>
+import reflowerMixins from 'common/js/mixins/reflower.js'
 export default {
-  name: 'referenceType-1'
+  name: 'referenceType1',
+  mixins: [reflowerMixins]
 }
 </script>
 

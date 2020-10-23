@@ -1,5 +1,5 @@
 <template>
-  <div class="dataTypes clearfix" ref="dataTypes">
+  <div class="dataTypes" ref="dataTypes">
     <div class="card-column">
       <div class="card-column-content">
         <div class="card-column-title">1、数据类型</div>
@@ -353,65 +353,14 @@
         </div>
       </div>
     </div>
-    <div class="card-column">
-      <div class="card-column-content">
-        <div class="card-column-title">6、数据类型转换</div>
-        <div class="card-group">
-          <div class="card">
-            <div class="card-header">字符串转数值。</div>
-            <div class="card-body">
-              <pre v-highlight>
-<code>
-</code>
-              </pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-column">
-      <div class="card-column-content">
-        <div class="card-column-title">7、数据类型转换</div>
-        <div class="card-group">
-          <div class="card">
-            <div class="card-header">字符串转数值。</div>
-            <div class="card-body">
-              <pre v-highlight>
-<code>
-  const x
-</code>
-              </pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-column">
-      <div class="card-column-content">
-        <div class="card-column-title">8、数据类型转换</div>
-        <div class="card-group">
-          <div class="card">
-            <div class="card-header">字符串转数值。</div>
-            <div class="card-body">
-              <pre v-highlight>
-<code>
-  const x
-  const x
-  const x
-  const x
-</code>
-              </pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
+import reflowerMixins from 'common/js/mixins/reflower.js'
 export default {
   name: 'dataTypes',
+  mixins: [reflowerMixins],
   data() {
     return {
       tableData: [
@@ -500,51 +449,6 @@ export default {
           object: 'new Function()'
         }
       ]
-    }
-  },
-  mounted() {
-    this.$nextTick(() => {
-      // ...
-      this.reflower(this.$refs.dataTypes)
-    })
-  },
-  methods: {
-    reflower(wrapper) {
-      const cards = wrapper.children
-      const cardWidth = cards[0].offsetWidth
-      console.log(cardWidth)
-
-      const cols = Math.floor(document.documentElement.clientWidth / cardWidth)
-      console.log(cols)
-
-      wrapper.style.cssText = ';width:' + cardWidth * cols + 'px;margin: 0 auto'
-
-      let arr = []
-
-      cards.forEach((item, index, array) => {
-        if (index < cols) {
-          arr.push(item.offsetHeight)
-        } else {
-          // 按最小列高度排列
-          // var minHeight = Math.min.apply(null, arr)
-          // const idx = arr.indexOf(minHeight)
-          // item.style.position = 'absolute'
-          // item.style.top = minHeight + 'px'
-          // item.style.left = cardWidth * idx + 'px'
-          // // item.style.left = cards[idx].offsetLeft + 'px'
-          // arr[idx] += cards[idx].offsetHeight
-
-          // 按顺序排列
-          const idx = index % cols
-          console.log('idx：', idx)
-          console.log('index：', index)
-          item.style.position = 'absolute'
-          item.style.top = arr[idx] + 'px'
-          // item.style.left = cardWidth * 1 + 'px'
-          item.style.left = cards[idx].offsetLeft + 'px'
-          arr[idx] += cards[idx].offsetHeight
-        }
-      })
     }
   }
 }

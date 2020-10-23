@@ -27,7 +27,7 @@
           <template slot="title">
             <strong slot="title">对象</strong>
           </template>
-          <MenuItem index="object-1">对象</MenuItem>
+          <MenuItem index="object-1">对象、属性</MenuItem>
           <MenuItem index="object-2">面向对象的程序设计</MenuItem>
         </Submenu>
         <Submenu index="array">
@@ -69,7 +69,7 @@
     </Menu>
     <section
       class="content-wrapper"
-      :style="{ 'margin-left': isCollapse ? '83px' : '220px' }"
+      :style="{ 'margin-left': isCollapse ? '83px' : '200px', 'padding-top': '20px' }"
     >
       <router-view></router-view>
     </section>
