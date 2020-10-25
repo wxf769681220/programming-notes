@@ -116,6 +116,18 @@ const routes = [
       {
         path: '/javascript/dom-6',
         component: Js.Dom6
+      },
+      {
+        path: '/javascript/form-1',
+        component: Js.form1
+      },
+      {
+        path: '/javascript/form-2',
+        component: Js.form2
+      },
+      {
+        path: '/javascript/form-3',
+        component: Js.form3
       }
     ]
   }

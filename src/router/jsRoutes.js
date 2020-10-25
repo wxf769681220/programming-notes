@@ -33,6 +33,10 @@ const Dom4 = () => import('views/javascript/dom/dom-4')
 const Dom5 = () => import('views/javascript/dom/dom-5')
 const Dom6 = () => import('views/javascript/dom/dom-6')
 
+const form1 = () => import('views/javascript/form/form-1')
+const form2 = () => import('views/javascript/form/form-2')
+const form3 = () => import('views/javascript/form/form-3')
+
 export default {
   JavaScript,
   DataTypes,
@@ -61,5 +65,8 @@ export default {
   Dom3,
   Dom4,
   Dom5,
-  Dom6
+  Dom6,
+  form1,
+  form2,
+  form3
 }

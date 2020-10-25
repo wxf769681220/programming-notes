@@ -69,6 +69,14 @@
         <MenuItem index="dom-5">DOM 事件</MenuItem>
         <MenuItem index="dom-6">DOM 操作技术</MenuItem>
       </Submenu>
+      <Submenu index="form">
+        <template slot="title">
+          <strong slot="title">表单</strong>
+        </template>
+        <MenuItem index="form-1">Form 类型</MenuItem>
+        <MenuItem index="form-2">表单字段</MenuItem>
+        <MenuItem index="form-3">选择框、富文本</MenuItem>
+      </Submenu>
     </Menu>
     <section
       class="content-wrapper"
