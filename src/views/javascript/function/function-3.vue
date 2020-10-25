@@ -1,572 +1,382 @@
 <template>
-  <div class="function-3">
+  <div class="function-3" ref="function3">
     <div class="card-column">
-      <div class="card-column-title">1、函数的模块设计</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header"><strong class="bold">作用域。</strong><br>
-            javascript 中没有块级作用域。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
+      <div class="card-column-content">
+        <div class="card-column-title">1、原型链继承</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <strong>让一个原型对象等于另一个类型的实例。</strong>
+            </div>
+            <div class="card-body">
+              <pre v-highlight>
 <code>
-  // 没有块级作用域
-  for (var i = 0; i &lt; 10; i++) {
-    //...
-  }
-  i => 10
-
-  // 相当于
-  var i = 0
-  for (/* empty */; i &lt; 10; i++) {
-    //...
-  }
-  i => 10
-</code>
-            </pre>
-          </div>
-          <div class="card-header"><strong class="bold">私有作用域。</strong><br>
-            定义一个私有作用域，来仿块级作用域。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  (function() {
-    var i = 0
-    for (/* empty */; i &lt; 10; i++) {
-      //...
-    }
-  })();
-
-  i => error
-</code>
-            </pre>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header"><strong class="bold">私有变量。</strong>任何在函数中定义的变量，都可以认为是私有变量。因为不能在函数的外部访问这些变量。</div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  // 创建一个私有作用域
-  (function() {
-    // 私有变量
-    var privateVariable = 10
-
-    // 私有函数
-    function privateFn() {
-      //...
-    }
-
-    // 没有使用 var 声明构造函数的函数表达式
-    // 这样就可以在全局调用该构造函数了
-    Fn = function() {
-      this.name = "alex"
-    }
-
-    // 特权方法
-    Fn.prototype.publicMethod = function () {
-      privateFn()
-      return privateVariable++
-    }
-  })();
-
-  // 实例化对象（全局调用）
-  var x = new Fn("alex")
-  x.name = "alex"
-  x.publicMethod() => 10
-</code>
-            </pre>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-column">
-      <div class="card-column-title">2、单例模式（singleton pattern）</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header"><strong class="bold">单例</strong>：指的就是只有一个实例的对象。<strong class="bold">单例模式</strong>：保证某个类型仅有一个实例，并提供一个访问它的全局访问点。</div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  // 单例模式
-  var o = (function() {
-    // 私有变量
-    var username = 'lee';
-    var age = 24;
-
-    // 私有函数
-    function privateFn() {
-      //...
-    }
-
-    // 公共方法
-    return {
-      getUsername: function() {
-        return username
-      },
-      getAge: function() {
-        return age
-      }
-    }
-  })();
-
-  // 只能通过公共方法获取私有变量
-  o.getUsername() => 'lee'
-  o.getAge()      => 24
-</code>
-            </pre>
-          </div>
-          <div class="card-header"><strong class="bold">单例模式增强。</strong>返回对象之前对其增强，单例必须是某种类型的实例，同时还必须添加某些属性或方法对其加以增强。</div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  var o = (function () {
-    // 私有变量
-    var username = 'lee';
-    var age = 24;
-
-    // 创建自定义类型对象
-    function CustomType() {
-      //...
-    }
-
-    // 添加原型属性增强
-    CustomType.prototype.getUsername = function () {
-      return username;
-    }
-
-    CustomType.prototype.getAge = function () {
-      return age;
-    }
-
-    // 实例化对象
-    var user = new CustomType()
-
-    // 添加实例属性增强
-    user.username = username;
-    user.age = age;
-
-    // 返回这个对象
-    return user
-  })();
-
-  o.username      => "lee"
-  o.age           => 24
-  o.getUsername() => "lee"
-  o.getAge()      => 24
-</code>
-            </pre>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-column">
-      <div class="card-column-title">3、高级函数</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header"><strong class="bold">作用域安全的构造函数。</strong><br>
-            作用域安全的构造函数，首先要确认 this 对象是正确类型的实例。若不是，则会创建新的实例并返回。作用域安全的构造函数不会影响原型链的继承。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
- /**
-  * 无论是作为构造函数调用还是作为普通函数调用
-  * 都会返回一个 Person 的新实例
-  * 从而避免在全局对象上意外设置属性
-  */
-  function Person(name, age) {
-    if (this instanceof Person) {
-      this.username = name;
-      this.age = age;
-      this.friends = ["f1", "f2", "f3"]
-    } else {
-      return new Person(name, age)
-    }
-  }
-</code>
-            </pre>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header"><strong class="bold">惰性载入函数。</strong><br>
-            函数体中包含大量的 if 语句，每次调用函数时，都要对 if 语句的每个分支进行检查。
-            实际上对于某些函数来说，在第一次调用时，if 语句的某个分支可以决定结果的， 就不需要每次调用函数时都去执行 if 语句再去检查各个分支。比如：createXHR() 函数。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  /**
-   * 惰性载入函数的实现
-   * if 语句的每一个分支都会为 createXHR 变量赋值
-   * 若某个分支可以决定结果，则用新赋值的 createXHR 变量覆盖了原有的函数
-   * 最后返回调用这个新赋 createXHR 函数
-   */
-  function createXHR() {
-    if (typeof XMLHttpRequest !== "undefined") {
-      createXHR = function() {
-        return new XMLHttpRequest()
-      }
-    } else if (typeof activeXObject !== "undefined") {
-      createXHR = function() {
-        if (typeof arguments.callee.activeXString !== "string") {
-          var versions = ["MSXML2.XMLHttp", "MSXML2.XMLHttp.3.0", "MSXML2.XMLHttp.6.0"]
-          for (var i = 0, len = versions.length; i &lt; len; i++) {
-            try {
-              new  ActiveXObject(versions[i])
-              arguments.callee.activeXString = versions[i]
-              break
-            } catch (ex) {
-              //跳过
-            }
-          }
-        }
-        return new ActiveXObject(arguments.callee.activeXString)
-      }
-    } else {
-      createXHR = function() {
-        throw new Error("No XHR object available")
-      }
-    }
-    return createXHR()
-  }
-</code>
-            </pre>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-column">
-      <div class="card-column-title">4、对象保护函数</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header"><strong class="bold">防篡改对象。</strong><br>
-            默认状况下，所有对象都是可自由扩展属性或方法的。<strong>Object.preventExtensions(object)</strong> 方法可以改变这个行为，即不能再为对象添加属性和方法。对于对象已有属性则丝毫不受影响。</div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  var obj = {
-    color: "red"
+  // 超类型
+  function Person() {
+    this.name = "lee"
+    this.age = 24
+    this.friends = ["f1", "f2", "f3"]
   }
 
-  // 对象不可扩展
-  Object.preventExtensions(obj)
-
-  // 静默失败
-  obj.username = "alex"
-
-  // 抛出错误
-  Object.defineProperty(obj, "username", {
-    writable: true,
-    value: "alex"
-  })
-
-  // 检测对象是否可以扩展的方法
-  Object.isExtensible(obj) => false
-</code>
-            </pre>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header"><strong class="bold">密封对象。</strong><br>
-           密封对象，即对象不可扩展，且已有属性 [[Configurable]] 特性将被设置为 false，这意味着无法通过 delete 操作符删除属性；不能把属性修改为访问器属性。
-           （注意属性值是可以修改的） 密封对象使用 <strong>Object.seal()</strong> 方法。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  var obj = {
-    color: "red"
-  }
-
-  // 对象不可扩展，
-  // 对象不可删除
-  // 不可将其修改为访问器属性
-  Object.seal(obj);
-
-  // 属性值可以修改
-  Object.defineProperty(obj, "color", {
-    writable: true,
-    value: "green"
-  })
-
-  obj.color => "green"
-
-  // 检测对象是否被密封了的方法
-  Object.isSealed(obj) => true
-</code>
-            </pre>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header"><strong class="bold">冻结对象。</strong><br>
-            冻结对象，即对象不可扩展，又是密封对象，且对象 [[writable]] 特性将被设置为 false。（注意若定义 [[set]] 函数，访问器属性仍然是可写的） 冻结对象使用 <strong>Object.freeze()</strong> 方法。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  var obj = {
-    color: "red"
-  }
-
-  Object.defineProperty(obj, "change", {
-    configurable: true,
-    enumerable: true,
-    get: function() {
-      return "yellow";
-    },
-    set: function (value) {
-      if (value === "green") {
-        console.log(value) => "green"
-        // 修改属性值无效
-        this.color = "blue";
-      }
-    }
-  })
-
-  Object.freeze(obj);
-
-  // 访问器属性，属性值可写
-  obj.change = "green"
-
-  obj.color => "red"
-  obj.change => "yellow"
-
-  // 数据属性，抛出错误
-  Object.defineProperty(obj, "color", {
-    writable: true,
-    value: "green"
-  })
-</code>
-            </pre>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-column">
-      <div class="card-column-title">5、函数内置方法</div>
-      <div class="card-group">
-        <div class="card">
-          <div class="card-header"><strong>Function.call()</strong> 方法。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  var obj = {
-    name: "alex",
-    age: 24
-  }
-
-  function fn() {
+  Person.prototype.say = function() {
     return this.name + this.age
   }
 
-  // 间接调用函数
-  // 该函数内部 this 指向 obj
-  fn.call(obj) => "alex24"
+  // 子类型
+  function Child() {}
+
+  // 原型链继承
+  Child.prototype = new Person()
+
+  var p1 = new Child()
+  p1.say() => "lee24"
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
-          <div class="card-header">函数作为某个对象的一个方法调用 call() 方法。</div>
-          <div class="card-body">
-            <pre v-highlight>
+          <div class="card">
+            <div class="card-header">
+              <strong>注意事项。</strong>
+            </div>
+            <div class="card-body">
+              <p>类型中需要覆盖超类型或添加超类型中不存在的某个方法时，给原型添加的方法的代码一定放在继承语句之后。</p>
+              <pre v-highlight>
 <code>
-  var obj = {
-    name: "alex",
+  // 继承
+  Child.prototype = new Person()
+
+  // 为子类型添加新的原型属性
+  // 必须放在继承语句之后
+  Child.prototype.say = function() {
+    //...
+  }
+</code>
+              </pre>
+              <p>子类型不能使用对象字面量创建原型对象。</p>
+              <pre v-highlight>
+<code>
+  // 继承
+  Child.prototype = new Person()
+
+  // 让一个原型等于另一个对象
+  // 实质上是重写了整个原型对象
+  // 导致上面继承语句失效
+  Child.prototype = {
+    say: function() {
+      //...
+    }
+  }
+</code>
+              </pre>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <strong>原型链继承的缺陷。</strong>
+            </div>
+            <div class="card-body">
+              <ol>
+                <li>让一个原型对象等于另一个类型的实例，本质上重写了原型对象。因此，切断了实例对象与原型之间的联系，
+                  导致子类型的原型对象上的 constructor 指针不再指向子类型构造函数，而是指向超类型构造函数。</li>
+                <li>在创建子类型实例时，切断了向超类型传递参数的可能。</li>
+                <li>子类型在原型上继承了超类型的所有属性，如果超类型实例属性是一个引用类型值，那么该属性将被所有子类型的实例所共享（重现 oop 设计模式中原型模式的缺点）。</li>
+              </ol>
+              <pre v-highlight>
+<code>
+  Child.prototype.construtor === Child => false
+  Child.prototype.construtor === Person => true
+
+  var p1 = new Child()
+  var p2 = new Child()
+
+  p1.friends.push('f4')
+
+  // 原型属性被所有实例所共享
+  p2.friends => ["f1", "f2", "f3", "f4"]
+</code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-column">
+      <div class="card-column-content">
+        <div class="card-column-title">2、借用构造函数</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <strong>子类型构造函数内部通过 <strong class="danger">Function.call()</strong> 或 <strong class="danger">Function.apply()</strong> 方法调用超类型构造函数。</strong>
+            </div>
+            <div class="card-body">
+              <pre v-highlight>
+<code>
+  // 超类型
+  function Person() {
+    this.name = "lee"
+    this.age = 24
+    this.friends = ["f1", "f2", "f3"]
+  }
+
+  // 原型
+  Person.prototype.say = function() {
+    return this.name + this.age
+  }
+
+  // 子类型
+  function Child() {
+    // 实现对超类型实例属性的继承
+    Person.call(this)
+  }
+
+  var p = new Child()
+  p.name => "lee"
+  p.age  => 24
+
+  // 缺点：超类型原型对子类型不可见
+  p.say() => error
+</code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-column">
+      <div class="card-column-content">
+        <div class="card-column-title">3、组合继承</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <strong>通过借用构造函数实现对超类型实例属性的继承，而通过原型链实现对超类型原型上定义的方法继承。</strong>
+            </div>
+            <div class="card-body">
+              <pre v-highlight>
+<code>
+  // 超类型
+  function Person(name, age) {
+    this.name = name
+    this.age = age
+    this.friends = ["f1", "f2", "f3"]
+  }
+
+  // 原型
+  Person.prototype.say = function() {
+    return this.name + this.age
+  }
+
+  // 子类型
+  function Child(age) {
+    // 继承实例属性
+    Person.call(this, 'lee', 24)
+    this.age = age
+  }
+
+  // 继承原型属性
+  Child.prototype = new Person()
+
+  // 重设 constructor 指向
+  Child.prototype.constructor = Child
+
+  // 为子类型添加新的原型属性
+  Child.prototype.say = function() {
+    return this.age
+  }
+
+  var p = new Child(20)
+
+  p.name => 'lee'
+  p.age => 20
+  p.say() => 20
+</code>
+              </pre>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <strong>缺点是：超类型会被调用两次。</strong>
+            </div>
+            <div class="card-body">
+              <pre v-highlight>
+<code>
+  // 第一次调用
+  Child.prototype = new Person()
+
+  // 第二次调用
+  Person.call(this, 'lee', 24)
+</code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-column">
+      <div class="card-column-content">
+        <div class="card-column-title">4、寄生式组合式继承</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              寄生式组合式继承是对组合继承的一种优化。设计思路：<strong>不必指定子类型的原型而调用超类型的构造函数，而是创建一个超类型原型的一个副本函数。</strong>
+            </div>
+            <div class="card-body">
+              <pre v-highlight>
+<code>
+  // 超类型
+  function Person(name, age) {
+    this.name = name
+    this.age = age
+    this.friends = ["f1", "f2", "f3"]
+  }
+
+  // 原型
+  Person.prototype.say = function() {
+    return this.name + this.age
+  }
+
+  // 子类型
+  function Child(age) {
+    Person.call(this, 'lee', 24)
+    this.age = age
+  }
+
+  // 创建超类型原型副本
+  function inheritPrototype(subType, superType) {
+    // 创建对象
+    var prototype = Object(superType.prototype)
+
+    // 增强对象
+    prototype.constructor = subType
+
+    // 指定对象
+    subType.prototype = prototype
+  }
+
+  // 实现继承
+  inheritPrototype(Child, Person)
+
+  Child.prototype.say = function() {
+    return this.name + this.age
+  }
+
+  var p = new Child(20)
+  p.say() => 'lee20'
+</code>
+              </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-column">
+      <div class="card-column-content">
+        <div class="card-column-title">5、原型式继承</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <strong>基于已有的对象创建新对象。缺陷：被继承对象包含引用类型值。</strong>
+            </div>
+            <div class="card-body">
+              <pre v-highlight>
+<code>
+  // 被继承对象
+  var o = {
+    name: 'lee',
     age: 24,
+    friends: ["f1", "f2", "f3"],
     say: function() {
       return this.name + this.age
     }
   }
 
+  // 创建继承函数
+  function fn(o) {
+    function Person() {}
+
+    Person.prototype = o
+
+    return new Person()
+  }
+
+  var res = fn(o)
+  res.say() => 'lee24'
+</code>
+              </pre>
+              <p>ECMAScript5 提供一个 <strong class="danger">Object.create()</strong> 方法规范化原型式继承。</p>
+              <pre v-highlight>
+<code>
   var o = {
-    name: "lee",
-    age: 20
-  }
-
-  // 该函数内部 this 指向 o 对象
-  obj.say.call(o) => "lee20"
-</code>
-            </pre>
-          </div>
-          <div class="card-header">带参数的 call() 方法。</div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  var obj = {
-    name: "alex",
+    name: 'lee',
     age: 24,
-    say: function(a) {
-      return this.name + this.age + a
-    }
-  }
-
-  var o = {
-    name: "lee",
-    age: 20
-  }
-
-  // 追加任意数量的参数
-  obj.say.call(o, 10) => "lee2010"
-</code>
-            </pre>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header"><strong>Function.apply()</strong> 方法。
-            与 call() 方法用法一样。区别是：它接受数组形式的参数。
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  var obj = {
-    name: "alex",
-    age: 24,
-    say: function(a, b) {
-      return this.name + this.age + (a + b)
-    }
-  }
-
-  var o = {
-    name: "lee",
-    age: 20
-  }
-
-  // 参数以数组的形式传入
-  obj.say.apply(o, [1, 2]) => "lee203"
-</code>
-            </pre>
-          </div>
-          <div class="card-header">若 apply() 的第一个参数不是对象，在非严格模式下与严格模式下的行为不一样。</div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  var obj = {
-    name: "alex",
-    age: 24,
-    say: function (a, b) {
-      // 非严格模式与严格模式下有所区别
-      console.log(this)
-      return this.name + this.age + (a + b)
-    }
-  }
-
-  var o = 1
-
-  obj.say.apply(o, [1,2]) => "NaN"
-</code>
-            </pre>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-header"><strong>Function.bind()</strong> 方法。
-          <ul>
-            <li>ECMAScript5 为所有函数定义了一个 bind() 方法，该方法创建一个新函数。</li>
-            <li>这个新函数的 this 被指定为 bind() 的第一个参数。而其余参数将作为新函数的参数，供调用时使用。</li>
-            <li>返回一个原函数的拷贝（新函数），并拥有指定的 this 值和初始参数。</li>
-          </ul>
-          </div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  /**
-   * 有的时候我们需要将一个对象的某个方法单独拿出来使用
-   * 由于作用域发生了变化，函数中的 this 不再指向当前对象
-   * 若函数在全局作用域下被调用，则函数中的 this 指向 window
-   * 这时我们需要将其绑定到特定对象上
-   */
-
-  // 全局变量
-  var name = 'alex'
-  var age = 24
-
-  // 对象属性
-  var person = {
-    name: "lee",
-    age: 20
-  }
-
-  var obj = {
-    name: "alex",
-    age: 24,
-    say: function(a) {
-      return this.name + this.age + "-" + a
-    }
-  }
-
-  // 获取对象某个方法的引用
-  var f = obj.say
-
-  // 在全局作用域调用
-  f(100) => "alex24-100"
-
-  // 将新函数的作用域绑定到特定对象
-  var foo = f.bind(person, 100)
-  foo() => "lee20-100"
-</code>
-            </pre>
-          </div>
-         <div class="card-header">函数绑定常常与回调函数、事件处理器一起使用，将函数作为变量传递的同时保留代码执行环境。</div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  // var myDiv = document.getElementById("div")
-
-  var person = {
-    name: "lee",
-    age: 20,
+    friends: ["f1", "f2", "f3"],
     say: function() {
-      console.log(this.name + this.age) => NaN / "lee20"
+      return this.name + this.age
     }
   }
 
-  // 将函数指针以值的形式进行传递
-  // 此时 this 指向 myDiv 元素，结果输出 NaN
-  EventUtil.addHandler(myDiv, 'click', person.say)
+  // 第二个参数以属性描述符的方式存在
+  var res = Object.create(o, {
+    name: {
+      value: 'LEE'
+    }
+  })
 
-  // 使用函数绑定 bind() 方法，
-  // 然后将函数指针以值的形式进行传递
-  // 此时 this 指向 person 对象, 结果输出 "lee20"
-  EventUtil.addHandler(myDiv, 'click', person.say.bind(person))
+  // 同名属性被覆盖
+  res.name => 'LEE'
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
-          <div class="card-header">自定义函数的 bind() 绑定方法。</div>
-          <div class="card-body">
-            <pre v-highlight>
+        </div>
+      </div>
+    </div>
+    <div class="card-column">
+      <div class="card-column-content">
+        <div class="card-column-title">6、寄生式继承</div>
+        <div class="card-group">
+          <div class="card">
+            <div class="card-header">
+              <strong>创建一个仅用于封装继承过程的函数，该函数内部以某种方式来增强对象，最后返回这个对象。</strong>
+            </div>
+            <div class="card-body">
+              <pre v-highlight>
 <code>
-  // 自定义绑定函数并传参
-  function myBind(fn, obj) {
-    return function() {
-      return fn.apply(obj, arguments)
-    }
-  }
-</code>
-            </pre>
-          </div>
-          <div class="card-header">函数柯里化。其基本方法与函数绑定时一样的。主要区别在于：当函数被调用时，返回的函数还需要设置一些传入的参数。
-            javascript 原生 bind() 方法已实现函数柯里化。</div>
-          <div class="card-body">
-            <pre v-highlight>
-<code>
-  function foo(num1, num2) {
-    return num1 + num2
-  }
-
-  function curry(fn) {
-    var args = Array.prototype.slice.call(arguments, 1)
-    return function() {
-      var innerArgs = Array.prototype.slice.call(arguments, 0)
-      var finalArgs = args.concat(innerArgs)
-      return fn.apply(null, finalArgs)
+  var o = {
+    name: 'lee',
+    age: 24,
+    friends: ["f1", "f2", "f3"],
+    say: function() {
+      return this.name + this.age
     }
   }
 
-  var y = curry(foo, 5, 5)
-  y() => 10
+  // 继承函数
+  function fn(o) {
+    // 通过调用函数创建一个新对象
+    // Object()函数非必须的
+    // 任何能返回新对象的函数都适用于此模式
+    var clone = Object(o)
+
+    // 通过某种方式增强这个对象
+    clone.name ='LEE'
+
+    clone.say = function() {
+      return this.name
+    }
+
+    // 返回对象
+    return clone
+  }
+
+  var res = fn(o)
+
+  res.say() => 'LEE'
+  res.age => 24
+  res.friends => ["f1", "f2", "f3"]
 </code>
-            </pre>
+              </pre>
+            </div>
           </div>
         </div>
       </div>
@@ -575,9 +385,12 @@
 </template>
 
 <script>
+import reflowerMixins from 'common/js/mixins/reflower.js'
 export default {
-  name: 'function-3'
+  name: 'function3',
+  mixins: [reflowerMixins]
 }
 </script>
 
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+</style>

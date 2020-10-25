@@ -8,8 +8,8 @@
             <div class="card-header">字符串转数值。</div>
             <div class="card-body">
               <pre v-highlight>
-  <code>
-  </code>
+<code>
+</code>
               </pre>
             </div>
           </div>
@@ -20,8 +20,10 @@
 </template>
 
 <script>
+import reflowerMixins from 'common/js/mixins/reflower.js'
 export default {
-  name: 'test'
+  name: 'test',
+  mixins: [reflowerMixins]
 }
 </script>
 

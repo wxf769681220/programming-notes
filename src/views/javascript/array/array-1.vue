@@ -117,12 +117,12 @@
             </div>
             <div class="card-body">
               <pre v-highlight>
-  <code>
-    for (var i = 0, len = arr.length; i &lt; len; i++) {
-      if (!arr[i]) continue;
-      //...
-    }
-  </code>
+<code>
+  for (var i = 0, len = arr.length; i &lt; len; i++) {
+    if (!arr[i]) continue;
+    //...
+  }
+</code>
               </pre>
             </div>
             <div class="card-header">
@@ -130,12 +130,12 @@
             </div>
             <div class="card-body">
               <pre v-highlight>
-  <code>
-    for (var i = 0, len = arr.length; i &lt; len; i++) {
-      if (arr[i] === undefined) continue;
-      //...
-    }
-  </code>
+<code>
+  for (var i = 0, len = arr.length; i &lt; len; i++) {
+    if (arr[i] === undefined) continue;
+    //...
+  }
+</code>
               </pre>
             </div>
             <div class="card-header">
@@ -143,12 +143,12 @@
             </div>
             <div class="card-body">
               <pre v-highlight>
-  <code>
-    for (var i = 0, len = arr.length; i &lt; len; i++) {
-      if (!(i in arr)) continue;
-      //...
-    }
-  </code>
+<code>
+  for (var i = 0, len = arr.length; i &lt; len; i++) {
+    if (!(i in arr)) continue;
+    //...
+  }
+</code>
               </pre>
             </div>
           </div>
@@ -182,22 +182,22 @@
             <div class="card-body">
               <p>类数组对象满足两个条件：1、以从 0 开始的连续整数数字值作为对象的属性名；2、另外还需设置一个 length 属性。</p>
               <pre v-highlight>
-  <code>
-    var o = {}
+<code>
+  var o = {}
 
-    var i = 0
-    var len = 3
+  var i = 0
+  var len = 3
 
-    while (i &lt; len) {
-      o[i] = i * i
-      i++
-    }
+  while (i &lt; len) {
+    o[i] = i * i
+    i++
+  }
 
-    o.length = i
+  o.length = i
 
-    // 类数组对象
-    o => { 0: 0, 1: 1, 2: 4, length: 3 }
-  </code>
+  // 类数组对象
+  o => { 0: 0, 1: 1, 2: 4, length: 3 }
+</code>
               </pre>
             </div>
           </div>
@@ -209,19 +209,19 @@
               <p>类数组对象没有继承自 <strong class="bold">Array.prototype</strong>，因此不能在它们的上面直接调用原生数组的方法。
             尽管如此，我们可以间接的使用 <strong class="danger">Function.call()</strong> 方法调用。</p>
               <pre v-highlight>
-  <code>
-    var o = {
-      0: 0,
-      1: 1,
-      2: 4,
-      3: 9,
-      length: 4
-    }
+<code>
+  var o = {
+    0: 0,
+    1: 1,
+    2: 4,
+    3: 9,
+    length: 4
+  }
 
-    // 间接调用
-    Array.prototype.join.call(o, '-') => '0-1-4-9'
-    Array.prototype.slice.call(o)     => [0, 1, 4, 9]
-  </code>
+  // 间接调用
+  Array.prototype.join.call(o, '-') => '0-1-4-9'
+  Array.prototype.slice.call(o)     => [0, 1, 4, 9]
+</code>
               </pre>
             </div>
           </div>
@@ -230,20 +230,23 @@
     </div>
     <div class="card-column">
       <div class="card-column-content">
-        <div class="card-column-title">4、检测数组的方法</div>
+        <div class="card-column-title">5、检测数组的方法</div>
         <div class="card-group">
           <div class="card">
-            <div class="card-header">当 web 浏览器中有多个窗口或窗体（frame）存在，每个窗口都有自己的 javascript 环境，都有自己的全局对象。
-              这时使用 <strong class="bold">instanceof 操作符</strong>用于数组检测并不可靠， 可以使用 <strong>Array.isArray()</strong> 函数。</div>
+            <div class="card-header">
+              <strong class="danger">Array.isArray()</strong> 方法。
+            </div>
             <div class="card-body">
+              <p>当 web 浏览器中有多个窗口或窗体（frame）存在，每个窗口都有自己的 javascript 环境，都有自己的全局对象。这时使用 <strong>instanceof 操作符</strong>用于数组检测并不可靠，
+              使用 Array.isArray() 函数更为可靠。</p>
               <pre v-highlight>
-  <code>
-    var arr = []
+<code>
+  var arr = []
 
-    arr instanceof Array  => true
+  arr instanceof Array  => true
 
-    Array.isArray(arr)    => true
-  </code>
+  Array.isArray(arr)    => true
+</code>
               </pre>
             </div>
           </div>

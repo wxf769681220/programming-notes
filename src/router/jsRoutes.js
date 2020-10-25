@@ -17,6 +17,8 @@ const Array2 = () => import('views/javascript/array/array-2')
 const Function1 = () => import('views/javascript/function/function-1')
 const Function2 = () => import('views/javascript/function/function-2')
 const Function3 = () => import('views/javascript/function/function-3')
+const Function4 = () => import('views/javascript/function/function-4')
+const Function5 = () => import('views/javascript/function/function-5')
 
 const Window = () => import('views/javascript/bom/window')
 const Location = () => import('views/javascript/bom/location')
@@ -29,6 +31,7 @@ const Dom2 = () => import('views/javascript/dom/dom-2')
 const Dom3 = () => import('views/javascript/dom/dom-3')
 const Dom4 = () => import('views/javascript/dom/dom-4')
 const Dom5 = () => import('views/javascript/dom/dom-5')
+const Dom6 = () => import('views/javascript/dom/dom-6')
 
 export default {
   JavaScript,
@@ -46,6 +49,8 @@ export default {
   Function1,
   Function2,
   Function3,
+  Function4,
+  Function5,
   Window,
   Location,
   Navigator,
@@ -55,5 +60,6 @@ export default {
   Dom2,
   Dom3,
   Dom4,
-  Dom5
+  Dom5,
+  Dom6
 }

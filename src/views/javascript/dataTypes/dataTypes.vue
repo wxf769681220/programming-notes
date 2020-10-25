@@ -50,133 +50,58 @@
     </div>
     <div class="card-column">
       <div class="card-column-content">
-        <div class="card-column-title">2、转型函数</div>
-        <div class="card-group">
-          <div class="card">
-            <div class="card-header">
-              <strong>转型函数</strong>：<strong class="danger">String()</strong
-              >、<strong class="danger">Number()</strong>、<strong class="danger"
-                >Boolean()</strong
-              >。
+        <div class="card-column-content">
+          <div class="card-column-title">2、转型函数</div>
+          <div class="card-group">
+            <div class="card">
+              <div class="card-header">
+                <strong>转型函数</strong>：<strong class="danger">String()</strong
+                >、<strong class="danger">Number()</strong>、<strong class="danger"
+                  >Boolean()</strong
+                >。
+              </div>
+              <div class="card-body">
+                <pre v-highlight>
+  <code>
+    // 转为字符串
+    String(null)       => "null"
+    String(undefined)  => "undefined"
+
+    // 转为数值
+    Number(null)      => 0
+    Number(undefined) => NaN
+
+    // 转为布尔值
+    Boolean(null)       => false
+    Boolean(undefined)  => false
+    Boolean("0")        => true
+  </code>
+                </pre>
+              </div>
             </div>
-            <div class="card-body">
-              <pre v-highlight>
-<code>
-  // 转为字符串
-  String(null)       => "null"
-  String(undefined)  => "undefined"
+            <div class="card">
+              <div class="card-header">
+                <strong>转型函数</strong>：<strong class="danger">Object()</strong
+                >。
+              </div>
+              <div class="card-body">
+                <pre v-highlight>
+  <code>
+    // 基本类型值
+    Object("")       // 相当于：new String("")
+    Object(0)        // 相当于：new Number(0)
+    Object(false)    // 相当于：new Boolean(false)
 
-  // 转为数值
-  Number(null)      => 0
-  Number(undefined) => NaN
+    // 特殊值，则返回空对象
+    Object(undefined)    => {}
+    Object(null)         => {}
 
-  // 转为布尔值
-  Boolean(null)       => false
-  Boolean(undefined)  => false
-  Boolean("0")        => true
-</code>
-              </pre>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <strong>转型函数</strong>：<strong class="danger">Object()</strong
-              >。
-            </div>
-            <div class="card-body">
-              <pre v-highlight>
-<code>
-  // 基本类型值
-  Object("")       // 相当于：new String("")
-  Object(0)        // 相当于：new Number(0)
-  Object(false)    // 相当于：new Boolean(false)
-
-  // 特殊值，则返回空对象
-  Object(undefined)    => {}
-  Object(null)         => {}
-
-  // 引用类型值
-  Object({})  // 相当于：new Object()
-  Object([])  // 相当于：new Array()
-</code>
-              </pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-column">
-      <div class="card-column-content">
-        <div class="card-column-title">3、字符串转数值的方法</div>
-        <div class="card-group">
-          <div class="card">
-            <div class="card-header">
-              <strong>转型函数</strong>：<strong class="danger">parseInt()</strong
-              >。
-            </div>
-            <div class="card-body">
-              <ol>
-                <li>它忽略字符串前面的空格，直到找到第一个非空格字符。</li>
-                <li>若第一个字符不是正负号或数字字符，则返回 NaN。</li>
-                <li>
-                  若第一个字符是正负号或数字字符，则继续向后解析第二个字符，直到解析完所有字符或遇到一个非数字字符。
-                </li>
-              </ol>
-              <pre v-highlight>
-<code>
-    parseInt("  1")       =>1
-    parseInt("-1")        =>-1
-    parseInt("1.234")     => 1
-    parseInt("1234abc")   => 1234
-
-    // 识别各种整数格式
-    parseInt("70")   => 70（十进制）
-    parseInt("070")  => 70（ECMAScript 5不支持字面量形式的八进制值）
-    parseInt("0xf")  => 15（十六进制）
-
-    // 带有第二个参数，表示以多少进制转换，
-    // 为了正确转换，传入这个参数很有必要
-    parseInt("1", 10)    => 1（十进制）
-    parseInt("10", 2)    => 2（二进制）
-    parseInt("070", 8)   => 56（强制使用八进制进行转换）
-    parseInt("0xf", 16)  => 15（十六进制）
-</code>
-              </pre>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <strong>转型函数</strong>：<strong class="danger"
-                >parseFloat()</strong
-              >。
-            </div>
-            <div class="card-body">
-              <ol>
-                <li>
-                  它从第一个字符开始解析每一个字符，直到遇见一个无效的浮点数字字符为止，也就是第一个小数点有效，第二个小数点就无效了，后面的字符串将被忽略。
-                </li>
-                <li>
-                  它忽略字符串前导空格和零，因此以 0
-                  为开头的十六进制格式的字符串始终返回 0。
-                </li>
-                <li>该函数只会解析十进制值，因此它没有第二个参数。</li>
-                <li>若该函数解析一个整数，则返回整数。</li>
-              </ol>
-              <pre v-highlight>
-<code>
-  // 忽略前导 0 或空格
-  parseFloat("  0001.1")    => 1.1
-
-  // 十六进制数
-  parseFloat("0xA")         => 0
-
-  // 只能识别第一个小数点字符
-  parseFloat("10.123.456")  => 10.123
-
-  // 解析整数时，返回整数
-  parseFloat("1.234e7")     => 12340000
-</code>
-              </pre>
+    // 引用类型值
+    Object({})  // 相当于：new Object()
+    Object([])  // 相当于：new Array()
+  </code>
+                </pre>
+              </div>
             </div>
           </div>
         </div>
@@ -184,78 +109,159 @@
     </div>
     <div class="card-column">
       <div class="card-column-content">
-        <div class="card-column-title">4、数值转字符串的方法</div>
-        <div class="card-group">
-          <div class="card">
-            <div class="card-header">
-              <strong class="danger">toString()</strong> 方法。
+        <div class="card-column-content">
+          <div class="card-column-title">3、字符串转数值的方法</div>
+          <div class="card-group">
+            <div class="card">
+              <div class="card-header">
+                <strong>转型函数</strong>：<strong class="danger">parseInt()</strong
+                >。
+              </div>
+              <div class="card-body">
+                <ol>
+                  <li>它忽略字符串前面的空格，直到找到第一个非空格字符。</li>
+                  <li>若第一个字符不是正负号或数字字符，则返回 NaN。</li>
+                  <li>
+                    若第一个字符是正负号或数字字符，则继续向后解析第二个字符，直到解析完所有字符或遇到一个非数字字符。
+                  </li>
+                </ol>
+                <pre v-highlight>
+  <code>
+      parseInt("  1")       =>1
+      parseInt("-1")        =>-1
+      parseInt("1.234")     => 1
+      parseInt("1234abc")   => 1234
+
+      // 识别各种整数格式
+      parseInt("70")   => 70（十进制）
+      parseInt("070")  => 70（ECMAScript 5不支持字面量形式的八进制值）
+      parseInt("0xf")  => 15（十六进制）
+
+      // 带有第二个参数，表示以多少进制转换，
+      // 为了正确转换，传入这个参数很有必要
+      parseInt("1", 10)    => 1（十进制）
+      parseInt("10", 2)    => 2（二进制）
+      parseInt("070", 8)   => 56（强制使用八进制进行转换）
+      parseInt("0xf", 16)  => 15（十六进制）
+  </code>
+                </pre>
+              </div>
             </div>
-            <div class="card-body">
-              <p>除了 null 和 undefined 之外，任何其他值都有 toString() 方法。该方法可以接收一个参数，表示输出数值的基数。</p>
-              <pre v-highlight>
-<code>
-  var num = 10
+            <div class="card">
+              <div class="card-header">
+                <strong>转型函数</strong>：<strong class="danger"
+                  >parseFloat()</strong
+                >。
+              </div>
+              <div class="card-body">
+                <ol>
+                  <li>
+                    它从第一个字符开始解析每一个字符，直到遇见一个无效的浮点数字字符为止，也就是第一个小数点有效，第二个小数点就无效了，后面的字符串将被忽略。
+                  </li>
+                  <li>
+                    它忽略字符串前导空格和零，因此以 0
+                    为开头的十六进制格式的字符串始终返回 0。
+                  </li>
+                  <li>该函数只会解析十进制值，因此它没有第二个参数。</li>
+                  <li>若该函数解析一个整数，则返回整数。</li>
+                </ol>
+                <pre v-highlight>
+  <code>
+    // 忽略前导 0 或空格
+    parseFloat("  0001.1")    => 1.1
 
-  // 十进制（默认）
-  num.toString(10)  => "10"
+    // 十六进制数
+    parseFloat("0xA")         => 0
 
-  // 二进制
-  num.toString(2)  => "1010"
-</code>
-              </pre>
+    // 只能识别第一个小数点字符
+    parseFloat("10.123.456")  => 10.123
+
+    // 解析整数时，返回整数
+    parseFloat("1.234e7")     => 12340000
+  </code>
+                </pre>
+              </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-header">
-              <strong  class="danger">toFixed()</strong> 方法。
-            </div>
-            <div class="card-body">
-              <p>指定小数点后的位数，将数字转为字符串。</p>
-              <pre v-highlight>
-<code>
-  var num = 123456.789
+        </div>
+      </div>
+    </div>
+    <div class="card-column">
+      <div class="card-column-content">
+        <div class="card-column-content">
+          <div class="card-column-title">4、数值转字符串的方法</div>
+          <div class="card-group">
+            <div class="card">
+              <div class="card-header">
+                <strong class="danger">toString()</strong> 方法。
+              </div>
+              <div class="card-body">
+                <p>除了 null 和 undefined 之外，任何其他值都有 toString() 方法。该方法可以接收一个参数，表示输出数值的基数。</p>
+                <pre v-highlight>
+  <code>
+    var num = 10
 
-  // 对结果会适当地进行四舍五入或填充零
-  num.toFixed(0)  => "123457"
-  num.toFixed(2)  => "123456.79"
-  num.toFixed(5)  => "123456.78900"
-</code>
-              </pre>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <strong class="danger">toExponential()</strong> 方法。
-            </div>
-            <div class="card-body">
-              <p>使用科学计数法，将数字转为字符串。该方法接收一个参数来指定小数点后的位数。</p>
-              <pre v-highlight>
-<code>
-  var num = 123456.789
+    // 十进制（默认）
+    num.toString(10)  => "10"
 
-  // 对结果会适当地进行四舍五入
-  num.toExponential(1)  => "1.2e+5"
-  num.toExponential(7)  => "1.2345679e+5"
-</code>
-              </pre>
+    // 二进制
+    num.toString(2)  => "1010"
+  </code>
+                </pre>
+              </div>
             </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <strong class="danger">toPrecision()</strong> 方法。
-            </div>
-            <div class="card-body">
-              <p>指定有效数字位数，将数值转为字符串。若有效数字位数小于数字整数部分的位数，则使用指数形式。若有效数字位数大于数字整数部分的位数，则用零在小数位补位。</p>
-              <pre v-highlight>
-<code>
-  var num = 123456.789
+            <div class="card">
+              <div class="card-header">
+                <strong  class="danger">toFixed()</strong> 方法。
+              </div>
+              <div class="card-body">
+                <p>指定小数点后的位数，将数字转为字符串。</p>
+                <pre v-highlight>
+  <code>
+    var num = 123456.789
 
-  // 对结果会适当地进行四舍五入或填充零
-  num.toPrecision(4)  => "1.235e+5"
-  num.toPrecision(7)  => "123456.8"
-  num.toPrecision(10) => "123456.7890"
-</code>
-              </pre>
+    // 对结果会适当地进行四舍五入或填充零
+    num.toFixed(0)  => "123457"
+    num.toFixed(2)  => "123456.79"
+    num.toFixed(5)  => "123456.78900"
+  </code>
+                </pre>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <strong class="danger">toExponential()</strong> 方法。
+              </div>
+              <div class="card-body">
+                <p>使用科学计数法，将数字转为字符串。该方法接收一个参数来指定小数点后的位数。</p>
+                <pre v-highlight>
+  <code>
+    var num = 123456.789
+
+    // 对结果会适当地进行四舍五入
+    num.toExponential(1)  => "1.2e+5"
+    num.toExponential(7)  => "1.2345679e+5"
+  </code>
+                </pre>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header">
+                <strong class="danger">toPrecision()</strong> 方法。
+              </div>
+              <div class="card-body">
+                <p>指定有效数字位数，将数值转为字符串。若有效数字位数小于数字整数部分的位数，则使用指数形式。若有效数字位数大于数字整数部分的位数，则用零在小数位补位。</p>
+                <pre v-highlight>
+  <code>
+    var num = 123456.789
+
+    // 对结果会适当地进行四舍五入或填充零
+    num.toPrecision(4)  => "1.235e+5"
+    num.toPrecision(7)  => "123456.8"
+    num.toPrecision(10) => "123456.7890"
+  </code>
+                </pre>
+              </div>
             </div>
           </div>
         </div>

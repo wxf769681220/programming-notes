@@ -66,6 +66,14 @@ const routes = [
         component: Js.Function3
       },
       {
+        path: '/javascript/function-4',
+        component: Js.Function4
+      },
+      {
+        path: '/javascript/function-5',
+        component: Js.Function5
+      },
+      {
         path: '/javascript/window',
         component: Js.Window
       },
@@ -104,6 +112,10 @@ const routes = [
       {
         path: '/javascript/dom-5',
         component: Js.Dom5
+      },
+      {
+        path: '/javascript/dom-6',
+        component: Js.Dom6
       }
     ]
   }

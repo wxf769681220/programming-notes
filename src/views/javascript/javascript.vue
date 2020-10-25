@@ -42,8 +42,10 @@
             <strong slot="title">函数</strong>
           </template>
           <MenuItem index="function-1">函数</MenuItem>
-          <MenuItem index="function-2">原型、原型链、继承</MenuItem>
-          <MenuItem index="function-3">高级函数</MenuItem>
+          <MenuItem index="function-2">原型、原型链</MenuItem>
+          <MenuItem index="function-3">继承</MenuItem>
+          <MenuItem index="function-4">模块模式设计</MenuItem>
+          <MenuItem index="function-5">高级函数</MenuItem>
         </Submenu>
       </Submenu>
       <Submenu index="bom">
@@ -60,11 +62,12 @@
         <template slot="title">
           <strong slot="title">DOM</strong>
         </template>
-        <MenuItem index="dom-1">节点</MenuItem>
+        <MenuItem index="dom-1">Node 对象</MenuItem>
         <MenuItem index="dom-2">节点类型</MenuItem>
-        <MenuItem index="dom-3">DOM扩展</MenuItem>
+        <MenuItem index="dom-3">DOM HTML5</MenuItem>
         <MenuItem index="dom-4">事件处理程序</MenuItem>
-        <MenuItem index="dom-5">DOM事件</MenuItem>
+        <MenuItem index="dom-5">DOM 事件</MenuItem>
+        <MenuItem index="dom-6">DOM 操作技术</MenuItem>
       </Submenu>
     </Menu>
     <section
