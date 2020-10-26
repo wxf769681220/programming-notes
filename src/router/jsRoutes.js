@@ -33,9 +33,17 @@ const Dom4 = () => import('views/javascript/dom/dom-4')
 const Dom5 = () => import('views/javascript/dom/dom-5')
 const Dom6 = () => import('views/javascript/dom/dom-6')
 
-const form1 = () => import('views/javascript/form/form-1')
-const form2 = () => import('views/javascript/form/form-2')
-const form3 = () => import('views/javascript/form/form-3')
+const Form1 = () => import('views/javascript/form/form-1')
+const Form2 = () => import('views/javascript/form/form-2')
+const Form3 = () => import('views/javascript/form/form-3')
+
+const JSON = () => import('views/javascript/json/json')
+
+const Ajax1 = () => import('views/javascript/ajax/ajax-1')
+const Ajax2 = () => import('views/javascript/ajax/ajax-2')
+const Ajax3 = () => import('views/javascript/ajax/ajax-3')
+const Ajax4 = () => import('views/javascript/ajax/ajax-4')
+const Ajax5 = () => import('views/javascript/ajax/ajax-5')
 
 export default {
   JavaScript,
@@ -66,7 +74,13 @@ export default {
   Dom4,
   Dom5,
   Dom6,
-  form1,
-  form2,
-  form3
+  Form1,
+  Form2,
+  Form3,
+  JSON,
+  Ajax1,
+  Ajax2,
+  Ajax3,
+  Ajax4,
+  Ajax5
 }

@@ -77,6 +77,17 @@
         <MenuItem index="form-2">表单字段</MenuItem>
         <MenuItem index="form-3">选择框、富文本</MenuItem>
       </Submenu>
+      <router-link class="link" tag="div" to="/javascript/json">JSON</router-link>
+      <Submenu index="ajax">
+        <template slot="title">
+          <strong slot="title">Ajax</strong>
+        </template>
+        <MenuItem index="ajax-1">XMLHttpRequest 对象</MenuItem>
+        <MenuItem index="ajax-2">XMLHttpRequest 2级</MenuItem>
+        <MenuItem index="ajax-3">HTTP 请求</MenuItem>
+        <MenuItem index="ajax-4">CORS 技术</MenuItem>
+        <MenuItem index="ajax-5">XSS 跨站脚本</MenuItem>
+      </Submenu>
     </Menu>
     <section
       class="content-wrapper"
@@ -125,6 +136,13 @@ export default {
     &::-webkit-scrollbar
       display: none
       -webkit-overflow-scrolling: touch
+    .link
+      padding: 0 20px
+      height: 56px
+      line-height: 56px
+      font-weight: bold
+      &:hover
+        background: rgba(236,245,255,1)
   .content-wrapper
     flex: 1 1 auto
 </style>

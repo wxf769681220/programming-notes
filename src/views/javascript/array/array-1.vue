@@ -169,10 +169,6 @@
                 <li>HTMLCollection 对象。</li>
                 <li>NodeList 对象。</li>
               </ul>
-              <pre v-highlight>
-  <code>
-  </code>
-              </pre>
             </div>
           </div>
           <div class="card">

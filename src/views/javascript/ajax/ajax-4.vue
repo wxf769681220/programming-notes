@@ -1,5 +1,5 @@
 <template>
-  <div class="test" ref="test">
+  <div class="ajax-1" ref="ajax1">
     <div class="card-column">
       <div class="card-column-content">
         <div class="card-column-title">1、数据类型转换</div>
@@ -22,7 +22,7 @@
 <script>
 import reflowerMixins from 'common/js/mixins/reflower.js'
 export default {
-  name: 'test',
+  name: 'ajax1',
   mixins: [reflowerMixins]
 }
 </script>

@@ -119,15 +119,39 @@ const routes = [
       },
       {
         path: '/javascript/form-1',
-        component: Js.form1
+        component: Js.Form1
       },
       {
         path: '/javascript/form-2',
-        component: Js.form2
+        component: Js.Form2
       },
       {
         path: '/javascript/form-3',
-        component: Js.form3
+        component: Js.Form3
+      },
+      {
+        path: '/javascript/json',
+        component: Js.JSON
+      },
+      {
+        path: '/javascript/ajax-1',
+        component: Js.Ajax1
+      },
+      {
+        path: '/javascript/ajax-2',
+        component: Js.Ajax2
+      },
+      {
+        path: '/javascript/ajax-3',
+        component: Js.Ajax3
+      },
+      {
+        path: '/javascript/ajax-4',
+        component: Js.Ajax4
+      },
+      {
+        path: '/javascript/ajax-5',
+        component: Js.Ajax5
       }
     ]
   }
