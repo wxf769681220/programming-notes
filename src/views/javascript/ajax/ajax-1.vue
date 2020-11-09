@@ -89,7 +89,7 @@
 
   // 请求预备
   xhr.open("get", "example.php", false) // 同步请求
-  xhr.open("get", "example.php", true)  // 异步请求
+  xhr.open("get", "example.php", true)  // 异步请求（默认）
 
   // 请求发送
   xhr.send(null)

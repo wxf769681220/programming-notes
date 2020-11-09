@@ -85,9 +85,14 @@
         <MenuItem index="ajax-1">XMLHttpRequest 对象</MenuItem>
         <MenuItem index="ajax-2">XMLHttpRequest 2级</MenuItem>
         <MenuItem index="ajax-3">HTTP 请求</MenuItem>
-        <MenuItem index="ajax-4">CORS 技术</MenuItem>
-        <MenuItem index="ajax-5">XSS 跨站脚本</MenuItem>
+        <MenuItem index="ajax-4">CORS 跨域技术</MenuItem>
+        <MenuItem index="ajax-5">其他跨域技术</MenuItem>
+        <MenuItem index="ajax-6">XSS 跨站脚本</MenuItem>
       </Submenu>
+      <router-link class="link" tag="div" to="/javascript/web-works">模拟多线程</router-link>
+      <router-link class="link" tag="div" to="/javascript/page-visibility">页面可见性</router-link>
+      <router-link class="link" tag="div" to="/javascript/timeout">定时器</router-link>
+      <router-link class="link" tag="div" to="/javascript/storage">客户端存储</router-link>
     </Menu>
     <section
       class="content-wrapper"

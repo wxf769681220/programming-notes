@@ -44,6 +44,12 @@ const Ajax2 = () => import('views/javascript/ajax/ajax-2')
 const Ajax3 = () => import('views/javascript/ajax/ajax-3')
 const Ajax4 = () => import('views/javascript/ajax/ajax-4')
 const Ajax5 = () => import('views/javascript/ajax/ajax-5')
+const Ajax6 = () => import('views/javascript/ajax/ajax-6')
+
+const WebWorks = () => import('views/javascript/webWorks/web-works')
+const PageVisibility = () => import('views/javascript/pageVisibility/page-visibility')
+const Timeout = () => import('views/javascript/timeout/timeout')
+const Storage = () => import('views/javascript/storage/storage')
 
 export default {
   JavaScript,
@@ -82,5 +88,10 @@ export default {
   Ajax2,
   Ajax3,
   Ajax4,
-  Ajax5
+  Ajax5,
+  Ajax6,
+  WebWorks,
+  PageVisibility,
+  Timeout,
+  Storage
 }

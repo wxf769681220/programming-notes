@@ -152,6 +152,26 @@ const routes = [
       {
         path: '/javascript/ajax-5',
         component: Js.Ajax5
+      },
+      {
+        path: '/javascript/ajax-6',
+        component: Js.Ajax6
+      },
+      {
+        path: '/javascript/web-works',
+        component: Js.WebWorks
+      },
+      {
+        path: '/javascript/page-visibility',
+        component: Js.PageVisibility
+      },
+      {
+        path: '/javascript/timeout',
+        component: Js.Timeout
+      },
+      {
+        path: '/javascript/storage',
+        component: Js.Storage
       }
     ]
   }

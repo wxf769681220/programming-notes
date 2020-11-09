@@ -2,7 +2,7 @@
   <div class="test" ref="test">
     <div class="card-column">
       <div class="card-column-content">
-        <div class="card-column-title">1、数据类型转换</div>
+        <div class="card-column-title">1、XSS分类</div>
         <div class="card-group">
           <div class="card">
             <div class="card-header">字符串转数值。</div>

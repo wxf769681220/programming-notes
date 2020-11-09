@@ -1,5 +1,5 @@
 <template>
-  <div class="ajax-4" ref="ajax4">
+  <div class="ajax-3" ref="ajax3">
     <div class="card-column">
       <div class="card-column-content">
         <div class="card-column-title">1、HTTP头部信息</div>
@@ -167,7 +167,7 @@
 <script>
 import reflowerMixins from 'common/js/mixins/reflower.js'
 export default {
-  name: 'ajax4',
+  name: 'ajax3',
   mixins: [reflowerMixins]
 }
 </script>
